@@ -22,7 +22,7 @@ const Pie = ({ winrate }) => {
   const secondCircleRotation = (360 * winrate) / 100 - 90;
 
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative flex items-center justify-center max-500:hidden">
       <svg viewBox="0 0 128 128" className="w-16 h-16 rounded-full">
         <g transform={`rotate(-90 ${"64 64"})`}>
           <Circle color={"#5383E8"} percentage={winrate} />
@@ -33,7 +33,7 @@ const Pie = ({ winrate }) => {
       </svg>
 
       <span
-        className={`absolute text-sm font-bold ${
+        className={`absolute text-sm leading-none text-center font-bold ${
           winrate === 0 ? "text-red-500" : "text-lb-500 dark:text-db-500"
         }`}
       >

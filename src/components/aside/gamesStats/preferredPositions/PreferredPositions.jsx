@@ -49,11 +49,43 @@ const PreferredPositions = ({ positions, games }) => {
     },
   ];
 
+  const getPreferredPosition = () => {
+    let maxGames = 0;
+    let preferredPosition = "";
+
+    for (let i = 0; i < POSITIONS.length; i++) {
+      const position = POSITIONS[i];
+      if (position.games > maxGames) {
+        maxGames = position.games;
+        preferredPosition = position;
+      }
+    }
+
+    return preferredPosition;
+  };
+
+  const preferredPosition = getPreferredPosition();
+
   return (
-    <div className="flex gap-2 pr-0.5">
-      {POSITIONS.map(({ position, games, pct, Icon }) => (
-        <Position key={position} games={games} pct={pct} Icon={Icon} />
-      ))}
+    <div className="flex flex-col gap-2">
+      <span className="text-xs text-center max-500:text-2xs text-main-6">
+        <span className="max-500:hidden">Preferred</span> Position
+      </span>
+
+      <div className="flex flex-col items-center justify-center gap-2 max-500:hidden">
+        <div className="flex gap-2">
+          {POSITIONS.map(({ position, games, pct, Icon }) => (
+            <Position key={position} games={games} pct={pct} Icon={Icon} />
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center justify-center w-full h-full gap-1 500:hidden">
+        <preferredPosition.Icon className="size-8" />
+        <span className="font-medium text-2xs text-main-6">
+          {preferredPosition.pct}%
+        </span>
+      </div>
     </div>
   );
 };

@@ -6,7 +6,7 @@ const Position = ({ games, pct, Icon }) => {
           style={{ height: `${pct}%` }}
           className="absolute bottom-0 flex justify-center w-4 bg-blue"
         >
-          <span className="absolute bottom-0 text-xs text-white">{games}</span>
+          <span className="absolute bottom-0 text-white text-2xs">{games}</span>
         </div>
       </div>
       <Icon className="size-4" />
