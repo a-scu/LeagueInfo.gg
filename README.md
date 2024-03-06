@@ -1,0 +1,1 @@
+# LeagueInfo.gg
