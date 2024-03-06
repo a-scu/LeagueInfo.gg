@@ -36,26 +36,28 @@ const GamesStats = ({ stats }) => {
           </div>
         </div>
 
-        <div className="flex w-full gap-1 py-1.5 px-2 bg-main-1">
-          <button className="py-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-3 dark:bg-main-4 rounded">
-            All
-          </button>
+        <div className="py-1.5 px-2 bg-main-1 flex justify-center">
+          <div className="flex w-full gap-1 max-w-80">
+            <button className="py-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-3 dark:bg-main-4 rounded">
+              All
+            </button>
 
-          <button className="border border-main-3 dark:border-main-4 py-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-1 dark:bg-main-1 rounded">
-            Normal
-          </button>
+            <button className="border border-main-3 dark:border-main-4 py-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-1 dark:bg-main-1 rounded">
+              Normal
+            </button>
 
-          <button className="border border-main-3 dark:border-main-4 py-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-1 dark:bg-main-1 rounded">
-            Solo
-          </button>
+            <button className="border border-main-3 dark:border-main-4 py-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-1 dark:bg-main-1 rounded">
+              Solo
+            </button>
 
-          <button className="border border-main-3 dark:border-main-4 py-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-1 dark:bg-main-1 rounded">
-            Flex
-          </button>
+            <button className="border border-main-3 dark:border-main-4 py-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-1 dark:bg-main-1 rounded">
+              Flex
+            </button>
 
-          <button className="border border-main-3 dark:border-main-4 flex-1 py-1 gap-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-1 dark:bg-main-1 rounded">
-            Queue Type <ArrowDown className="size-3" />
-          </button>
+            <button className="border border-main-3 dark:border-main-4 flex-1 py-1 gap-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-1 dark:bg-main-1 rounded">
+              Queue Type <ArrowDown className="size-3" />
+            </button>
+          </div>
         </div>
       </div>
 
