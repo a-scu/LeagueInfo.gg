@@ -26,9 +26,10 @@ const ExpandButton = ({ id }) => {
   return (
     <button
       onClick={handleOnClick}
-      className="flex items-center justify-center h-5 gap-1 px-2 text-xs rounded text-main-6 bg-main-3 dark:bg-main-4"
+      className={`flex items-center justify-center w-8 h-5 text-xs rounded text-main-6 bg-main-3 dark:bg-main-4 ${
+        id === "ranked" ? "max-1126:hidden" : "sm:hidden 1126:flex"
+      }`}
     >
-      <span>{expanded ? "Collapse" : "Expand"}</span>
       <ArrowDown
         className={`size-3 transition-transform ${
           expanded ? "rotate-180" : ""
