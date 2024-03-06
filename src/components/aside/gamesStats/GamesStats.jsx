@@ -2,7 +2,6 @@ import ExpandButton from "../ExpandButton";
 import Pie from "./Pie";
 import PreferredPositions from "./preferredPositions/PreferredPositions";
 import PlayedChampions from "./playedChampions/PlayedChampions";
-import ArrowDown from "@/components/icons/ArrowDown";
 
 const GamesStats = ({ stats }) => {
   const { summoner } = stats;
@@ -18,61 +17,34 @@ const GamesStats = ({ stats }) => {
   } = summoner;
 
   return (
-    <div className="flex flex-col gap-px overflow-hidden rounded max-800:rounded-none">
-      <div className="flex flex-col gap-px">
-        <div className="py-1.5 px-2 bg-main-1 flex justify-center">
-          <div className="flex w-full gap-1 max-w-80">
-            <button className="py-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-3 dark:bg-main-4 rounded">
-              All
-            </button>
+    <div className="flex flex-col gap-px overflow-hidden rounded max-sm:flex-col max-1126:flex-row max-800:rounded-none">
+      <div className="flex items-center justify-between w-full gap-4 p-2 bg-main-1">
+        <div className="flex items-center gap-2">
+          <Pie winrate={winrate} wins={wins} losses={losses} />
 
-            <button className="border border-main-3 dark:border-main-4 py-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-1 dark:bg-main-1 rounded">
-              Normal
-            </button>
-
-            <button className="border border-main-3 dark:border-main-4 py-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-1 dark:bg-main-1 rounded">
-              Solo
-            </button>
-
-            <button className="border border-main-3 dark:border-main-4 py-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-1 dark:bg-main-1 rounded">
-              Flex
-            </button>
-
-            <button className="border border-main-3 dark:border-main-4 flex-1 py-1 gap-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-1 dark:bg-main-1 rounded">
-              Queue Type <ArrowDown className="size-3" />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-px max-sm:flex-col max-1126:flex-row">
-        <div className="flex items-center justify-between w-full gap-4 p-2 max-sm:px-4 max-350:px-2 bg-main-1">
-          <div className="flex items-center gap-2">
-            <Pie winrate={winrate} wins={wins} losses={losses} />
-
-            <div className="flex flex-col">
-              <div className="text-xs font-medium text-main-6">
-                <span>{killsPerGame}</span>
-                {" / "}
-                <span className="text-red">{deathsPerGame}</span>
-                {" / "}
-                <span>{assistsPerGame}</span>
-              </div>
-
-              <p className="text-sm font-bold text-main-text">
-                {kdaPerGame}:1 KDA
-              </p>
-              <p className="text-2xs text-red">P/Kill {pKillPerGame}%</p>
+          <div className="flex flex-col">
+            <div className="text-xs font-medium text-main-6">
+              <span>{killsPerGame}</span>
+              {" / "}
+              <span className="text-red">{deathsPerGame}</span>
+              {" / "}
+              <span>{assistsPerGame}</span>
             </div>
+
+            <p className="text-sm font-bold text-main-text">
+              {kdaPerGame}:1 KDA
+            </p>
+            <p className="text-2xs text-red">P/Kill {pKillPerGame}%</p>
           </div>
-          <PreferredPositions
-            positions={summoner.positions}
-            games={summoner.games}
-          />
         </div>
 
-        <PlayedChampions champions={summoner.champions} />
+        <PreferredPositions
+          positions={summoner.positions}
+          games={summoner.games}
+        />
       </div>
+
+      <PlayedChampions champions={summoner.champions} />
     </div>
   );
 };

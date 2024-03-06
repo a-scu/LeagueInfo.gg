@@ -4,7 +4,7 @@ const PlayedChampions = ({ champions }) => {
   return (
     <div id="playedChampions" className="flex flex-col w-full gap-px">
       {Object.keys(champions)
-        .slice(0, 3)
+        .slice(0, 2)
         .map((key) => (
           <Champion key={champions[key].name} champion={champions[key]} />
         ))}

@@ -30,7 +30,7 @@ const Champion = ({ champion }) => {
   const kdaColor = getKdaColor(kda);
 
   return (
-    <div className="flex items-center justify-between p-2 max-350:px-2 max-sm:px-4 bg-main-1">
+    <div className="flex items-center justify-between p-2 bg-main-1">
       <div className="flex w-[120px] gap-2">
         <div className="overflow-hidden rounded-full size-8 min-size-8 aspect-square">
           <img
