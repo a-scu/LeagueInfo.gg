@@ -20,22 +20,6 @@ const GamesStats = ({ stats }) => {
   return (
     <div className="flex flex-col gap-px overflow-hidden rounded max-800:rounded-none">
       <div className="flex flex-col gap-px">
-        <div className="flex py-1.5 px-2 justify-between bg-main-1 items-center gap-2">
-          <p className="text-xs font-medium text-center 800:text-sm dark:font-normal text-main-text">
-            Stats
-          </p>
-
-          <div className="flex items-center gap-2">
-            <div className="flex-1 text-xs font-medium">
-              <span className="text-blue">{wins}W</span>{" "}
-              <span className="text-red">{losses}L</span>{" "}
-              <span className="font-normal text-main-6">{winrate}%</span>
-            </div>
-
-            <ExpandButton id="playedChampions" />
-          </div>
-        </div>
-
         <div className="py-1.5 px-2 bg-main-1 flex justify-center">
           <div className="flex w-full gap-1 max-w-80">
             <button className="py-1 px-2.5 flex items-center justify-center text-center text-xs text-main-text bg-main-3 dark:bg-main-4 rounded">
@@ -64,7 +48,7 @@ const GamesStats = ({ stats }) => {
       <div className="flex flex-col gap-px max-sm:flex-col max-1126:flex-row">
         <div className="flex items-center justify-between w-full gap-4 p-2 max-sm:px-4 max-350:px-2 bg-main-1">
           <div className="flex items-center gap-2">
-            <Pie percentage={winrate} />
+            <Pie winrate={winrate} wins={wins} losses={losses} />
 
             <div className="flex flex-col">
               <div className="text-xs font-medium text-main-6">

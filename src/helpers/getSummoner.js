@@ -118,7 +118,7 @@ const getSummonerByPuuid = async (puuid) => {
 //
 
 const getRecentGames = async (puuid, CHAMPIONS, SPELLS, RUNES, ITEMS) => {
-  const GAMES_TO_FETCH = 20;
+  const GAMES_TO_FETCH = 5;
 
   const recentGamesIds = await getRecentGamesIds(puuid, GAMES_TO_FETCH);
   const recentGames = await Promise.all(
