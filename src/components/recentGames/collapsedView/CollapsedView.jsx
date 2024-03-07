@@ -21,8 +21,9 @@ export default function CollapsedView({
 }) {
   return (
     <div
+      id={`collapsed-view-${gameId}`}
       className={`w-full relative pt-[26px] pl-1 800:pl-1.5 800:pr-10 800:pt-0 flex ${
-        summoner.win ? "bg-lb-100 dark:bg-db-100" : "bg-lr-100 dark:bg-dr-100"
+        summoner.win ? "bg-blue-1 border-b-blue-2" : "bg-red-1 border-b-red-2"
       }`}
     >
       <Decoration win={summoner.win} />

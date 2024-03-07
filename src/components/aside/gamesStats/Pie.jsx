@@ -23,7 +23,7 @@ const Pie = ({ winrate }) => {
 
   return (
     <div className="relative flex items-center justify-center max-500:hidden">
-      <svg viewBox="0 0 128 128" className="rounded-full size-[60px]">
+      <svg viewBox="0 0 128 128" className="rounded-full size-16">
         <g transform={`rotate(-90 ${"64 64"})`}>
           <Circle color={"#5383E8"} percentage={winrate} />
         </g>

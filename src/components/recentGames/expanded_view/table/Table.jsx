@@ -24,6 +24,7 @@ export default function Table({
         objectives={objectives}
         gameStats={gameStats}
         team={team}
+        isSummonerTeam={isSummonerTeam}
       />
       <TableBody
         win={win}
