@@ -2,7 +2,7 @@ import Champion from "./Champion";
 
 const PlayedChampions = ({ champions }) => {
   return (
-    <div className="flex flex-col gap-2 1126:pt-0 1126:p-2 1126:col-span-2 max-1126:items-end">
+    <div className="flex flex-col gap-2 1126:hidden 1126:pt-0 1126:p-2 1126:col-span-2 max-1126:items-end">
       <span className="text-xs text-center max-500:text-2xs max-1126:text-end text-main-6">
         Most Played <span className="max-500:hidden">Champions</span>
       </span>

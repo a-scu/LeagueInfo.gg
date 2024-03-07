@@ -18,7 +18,7 @@ const GamesStats = ({ stats }) => {
 
   return (
     <div className="max-360:grid-cols-[100px,40px,100px] max-500:grid-cols-[100px,102px,100px] grid-cols-[160px,102px,160px] max-1126:justify-evenly max-500:justify-between max-800:rounded-none grid gap-2 max-1126:p-2 overflow-hidden rounded 1126:grid-cols-[1fr,110px] 1126:grid-rows-[fit,fit] bg-main-1">
-      <div className="flex flex-col flex-1 gap-2 1126:pl-2 1126:pt-2">
+      <div className="flex flex-col flex-1 gap-2 1126:pl-2 1126:py-2">
         <span className="text-xs text-main-6 max-500:hidden max-500:text-2xs">
           {games}G {wins}W {losses}L{" "}
           <span className="max-500:hiden">({winrate.toFixed(0)}%)</span>

@@ -33,45 +33,45 @@ import getGamesStats from "./getGamesStats";
 const API_KEY = process.env.RIOT_API_KEY;
 const DDRAGON_API_VERSION = process.env.DDRAGON_API_VERSION;
 
+let SUMMONER, CHAMPIONS, SPELLS, RUNES, ITEMS;
+
 export default async function getSummoner(search) {
   if (!search) throw new Error("Empty search");
 
-  let summoner;
-
   if (search.includes("-")) {
     const [name, tag] = search.split("-");
-    summoner = await getAccountByNameAndTag(name, tag);
-    summoner = { ...summoner, ...(await getSummonerByPuuid(summoner.puuid)) };
+    SUMMONER = await getAccountByNameAndTag(name, tag);
+    SUMMONER = { ...SUMMONER, ...(await getSummonerByPuuid(SUMMONER.puuid)) };
   } else {
-    summoner = await getSummonerByName(search);
-    summoner = { ...summoner, ...(await getAccountByPuuid(summoner.puuid)) };
+    SUMMONER = await getSummonerByName(search);
+    SUMMONER = { ...SUMMONER, ...(await getAccountByPuuid(SUMMONER.puuid)) };
   }
 
-  if (!summoner) throw new Error("Summoner not found");
+  if (!SUMMONER) throw new Error("Summoner not found");
 
   const champions = await fetch(
     `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_API_VERSION}/data/en_US/champion.json`
   );
-  const CHAMPIONS = await champions.json();
+  CHAMPIONS = await champions.json();
 
   const spells = await fetch(
     `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_API_VERSION}/data/en_US/summoner.json`
   );
-  const SPELLS = await spells.json();
+  SPELLS = await spells.json();
 
   const runes = await fetch(
     `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_API_VERSION}/data/en_US/runesReforged.json`
   );
-  const RUNES = await runes.json();
+  RUNES = await runes.json();
 
   const items = await fetch(
     `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_API_VERSION}/data/en_US/item.json`
   );
-  const ITEMS = await items.json();
+  ITEMS = await items.json();
 
-  let ranked = await getRanked(summoner.id);
+  let ranked = await getRanked(SUMMONER.id);
   let recentGames = await getRecentGames(
-    summoner.puuid,
+    SUMMONER.puuid,
     ranked,
     CHAMPIONS,
     SPELLS,
@@ -79,13 +79,15 @@ export default async function getSummoner(search) {
     ITEMS
   );
 
+  const rankedGames = getRankedGames(SUMMONER.puuid);
+
   return {
-    ...summoner,
-    name: summoner.gameName,
-    tag: summoner.tagLine,
-    previousName: summoner.name,
-    level: summoner.summonerLevel,
-    icon: `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_API_VERSION}/img/profileicon/${summoner.profileIconId}.png`,
+    ...SUMMONER,
+    name: SUMMONER.gameName,
+    tag: SUMMONER.tagLine,
+    previousName: SUMMONER.name,
+    level: SUMMONER.summonerLevel,
+    icon: `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_API_VERSION}/img/profileicon/${SUMMONER.profileIconId}.png`,
     ranked,
     recentGames,
   };
@@ -147,4 +149,112 @@ const getRecentGamesIds = async (puuid, GAMES_TO_FETCH) => {
     `https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=${GAMES_TO_FETCH}&api_key=${API_KEY}`
   );
   return await res.json();
+};
+
+const getRankedGames = async (puuid) => {
+  const COUNT = 100; // Matches to fetch
+  const QUEUE = 420; // Solo : 420, flex: 440
+  const SEASON_START = 1704898800; // Season start timestamp
+
+  const res = await fetch(
+    `https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?startTime=${SEASON_START}&queue=${QUEUE}&type=ranked&start=0&count=${COUNT}&api_key=${API_KEY}`
+  );
+  const ids = await res.json();
+
+  let lastRankedGameEndTimestamp = 0; // Timestamp of the last game fetched
+
+  const GAMES = await Promise.all(
+    ids.map(async (gameId) => {
+      const res = await fetch(
+        `https://americas.api.riotgames.com/lol/match/v5/matches/${gameId}?api_key=${API_KEY}`
+      );
+      const game = await res.json();
+
+      const { gameDuration, gameEndTimestamp } = game.info;
+
+      const {
+        win,
+        championId,
+        championName,
+        kills,
+        deaths,
+        assists,
+        totalMinionsKilled,
+        neutralMinionsKilled,
+        visionScore,
+      } = game.info.participants.find(({ puuid }) => puuid === SUMMONER.puuid);
+
+      if (gameEndTimestamp > lastRankedGameEndTimestamp)
+        lastRankedGameEndTimestamp = gameEndTimestamp;
+
+      const cs = totalMinionsKilled + neutralMinionsKilled;
+
+      return {
+        gameDuration,
+        win,
+        champId: championId,
+        champName: championName,
+        kills,
+        deaths,
+        assists,
+        cs,
+        vision: visionScore,
+      };
+    })
+  );
+
+  const CHAMPIONS_PLAYED = getChampionsPlayed(GAMES);
+
+  return CHAMPIONS_PLAYED;
+};
+
+const getChampionsPlayed = (GAMES) => {
+  const INITIAL_CHAMPION = {
+    totalTimePlayed: 0,
+    games: 0,
+    wins: 0,
+    losses: 0,
+    champName: "",
+    champIcon: "",
+    kills: 0,
+    deaths: 0,
+    assists: 0,
+    cs: 0,
+    vision: 0,
+  };
+
+  const CHAMPIONS_PLAYED = {};
+
+  GAMES.forEach((game) => {
+    let CHAMPION;
+
+    if (CHAMPIONS_PLAYED[game.champName]) {
+      CHAMPION = CHAMPIONS_PLAYED[game.champName];
+    } else {
+      const { image } = Object.values(CHAMPIONS.data).find(
+        ({ key }) => key === game.champId.toString()
+      );
+      const champIcon = `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_API_VERSION}/img/champion/${image.full}`;
+
+      CHAMPION = {
+        ...INITIAL_CHAMPION,
+        champName: game.champName,
+        champIcon,
+      };
+    }
+
+    CHAMPION.totalTimePlayed += game.gameDuration;
+    CHAMPION.games += 1;
+    game.win ? (CHAMPION.wins += 1) : (CHAMPION.losses += 1);
+
+    CHAMPION.kills += game.kills;
+    CHAMPION.deaths += game.deaths;
+    CHAMPION.assists += game.assists;
+    CHAMPION.cs += game.cs;
+    CHAMPION.vision += game.vision;
+
+    CHAMPIONS_PLAYED[game.champName] = CHAMPION;
+  });
+
+  return CHAMPIONS_PLAYED;
 };
