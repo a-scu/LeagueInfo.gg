@@ -3,7 +3,7 @@ export default function TableHead({ win, teamSide, isSummonerTeam }) {
     <thead
       className={`max-[0px]:hidden flex w-full items-center max-sm:h-5 px-1 h-6 ${
         win ? "border-blue-2" : "border-red-2"
-      } ${isSummonerTeam ? "border-b" : "border-b"}`}
+      } ${isSummonerTeam ? "border-b" : "border-y"}`}
     >
       <tr className="flex items-center justify-between w-full text-center text-lg-500 dark:text-dg-500 text-3xs sm:text-2xs">
         <th className="max-sm:w-[209px] w-[231px] p-0 font-medium text-start flex items-center sm:gap-[5px] max-sm:justify-between">
