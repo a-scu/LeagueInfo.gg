@@ -38,7 +38,7 @@ export default function CollapsedView({
         <div className="flex flex-col flex-1 gap-1">
           <div className="flex ">
             <div className="flex items-center gap-1">
-              <div className="flex items-center gap-0.5">
+              <div className="flex items-center gap-1">
                 <Champion
                   champName={summoner.champName}
                   champLevel={summoner.champLevel}

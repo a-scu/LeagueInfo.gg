@@ -108,7 +108,7 @@ export default function TableBody({
             }`}
           >
             <td className="flex gap-0.5 p-0">
-              <div className="flex items-center gap-px">
+              <div className="flex items-center gap-0.5">
                 <Champion
                   champName={participant.champName}
                   champLevel={participant.champLevel}
@@ -116,8 +116,10 @@ export default function TableBody({
                   score={score}
                   scoreColor={scoreColor}
                 />
-                <Spells spells={participant.spells} />
-                <Runes runes={participant.runes} />
+                <div className="flex items-center gap-px">
+                  <Spells spells={participant.spells} />
+                  <Runes runes={participant.runes} />
+                </div>
               </div>
 
               <div className="flex flex-col gap-y-0.5 max-sm:max-w-[132px] max-w-[146px]">
