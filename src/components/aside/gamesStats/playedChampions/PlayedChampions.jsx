@@ -9,7 +9,7 @@ const PlayedChampions = ({ champions, games }) => {
 
       <div
         id="playedChampions"
-        className="flex items-center justify-center w-full h-full gap-2 max-0:items-center max-0:justify-end max-1126:flex-col max-1126:items-end max-0:flex-row"
+        className="flex items-center justify-center w-full h-full gap-2 1126:gap-4 max-0:items-center max-0:justify-end max-1126:flex-col max-1126:items-end max-0:flex-row"
       >
         {Object.keys(champions)
           .slice(0, 2)

@@ -30,17 +30,17 @@ const Champion = ({ champion }) => {
         </span>
       </div> */}
 
-      <div className="flex items-center gap-2 max-500:text-3xs text-2xs max-1126:flex-row-reverse">
-        <div className="overflow-hidden rounded-full max-500:size-6 size-7 aspect-square">
+      <div className="flex items-center gap-2 text-2xs max-1126:flex-row-reverse">
+        <div className="overflow-hidden rounded-full size-[30px] min-size-[30px] aspect-square">
           <img
             src={icon}
             alt={name}
             loading="lazy"
-            className="object-cover bg-black rounded-full pointer-events-none size-7 max-500:size-6 aspect-square scale-115"
+            className="object-cover bg-black rounded-full pointer-events-none size-[30px] min-size-[30px] aspect-square scale-115"
           />
         </div>
 
-        <div className="flex flex-col max-1126:text-end max-500:gap-0.5">
+        <div className="flex flex-col max-1126:text-end">
           <span className={`font-medium ${kdaColor}`}>
             {kda === "Perfect" ? kda : `${kda}:1`} KDA
           </span>

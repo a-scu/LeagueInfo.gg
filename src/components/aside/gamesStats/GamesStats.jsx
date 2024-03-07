@@ -17,7 +17,7 @@ const GamesStats = ({ stats }) => {
   } = summoner;
 
   return (
-    <div className="max-360:grid-cols-[96px,40px,96px] max-500:grid-cols-[96px,102px,96px] grid-cols-[160px,112px,160px] max-1126:justify-between max-800:rounded-none grid gap-2 max-1126:p-2 overflow-hidden rounded 1126:grid-cols-[1fr,112px] 1126:grid-rows-[fit,fit] bg-main-1">
+    <div className="max-360:grid-cols-[100px,40px,100px] max-500:grid-cols-[100px,102px,100px] grid-cols-[160px,102px,160px] max-1126:justify-between max-800:rounded-none grid gap-2 max-1126:p-2 overflow-hidden rounded 1126:grid-cols-[1fr,110px] 1126:grid-rows-[fit,fit] bg-main-1">
       <div className="flex flex-col flex-1 gap-2 1126:pl-2 1126:pt-2">
         <span className="text-xs text-main-6 max-500:hidden max-500:text-2xs">
           {games}G {wins}W {losses}L{" "}
@@ -30,7 +30,7 @@ const GamesStats = ({ stats }) => {
           <Pie winrate={winrate} />
 
           <div className="flex flex-col">
-            <div className="500:hidden relative items-center justify-center w-[96px] min-w-[96px] flex mb-1.5">
+            <div className="500:hidden relative items-center justify-center w-[100px] min-w-[100px] flex mb-1.5">
               <span className="absolute z-10 text-white text-3xs">
                 {wins}W {losses}L {winrate}%
               </span>
