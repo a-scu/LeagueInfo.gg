@@ -3,17 +3,8 @@ import Objectives from "./Objectives";
 
 export default function TeamsComparison({ summonerTeam, opponentTeam }) {
   return (
-    <div className="flex p-2 bg-white dark:bg-dg-0">
-      <div className="flex flex-col items-center justify-center flex-1 gap-0.5">
-        <Objectives
-          win={summonerTeam.win}
-          objectives={summonerTeam.objectives}
-        />
-        <Objectives
-          win={opponentTeam.win}
-          objectives={opponentTeam.objectives}
-        />
-      </div>
+    <div className="flex items-center justify-evenly gap-1 px-1 py-1.5 bg-main-2">
+      <Objectives win={summonerTeam.win} objectives={summonerTeam.objectives} />
 
       <KillsAndGold
         summonerTeamWin={summonerTeam.win}
@@ -22,6 +13,8 @@ export default function TeamsComparison({ summonerTeam, opponentTeam }) {
         summonerTeamKills={summonerTeam.kills}
         summonerTeamGold={summonerTeam.gold}
       />
+
+      <Objectives win={opponentTeam.win} objectives={opponentTeam.objectives} />
     </div>
   );
 }

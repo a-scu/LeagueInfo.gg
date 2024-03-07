@@ -1,5 +1,6 @@
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
+import TableFoot from "./tableFoot/TableFoot";
 
 export default function Table({
   win,
@@ -11,11 +12,12 @@ export default function Table({
   objectives,
   team,
   isSummonerTeam,
+  opponentTeam,
 }) {
   return (
     <table
-      className={`flex flex-col w-full ${
-        win ? "bg-lb-100 dark:bg-db-100" : "bg-lr-100 dark:bg-dr-100"
+      className={`flex w-full ${!isSummonerTeam ? "flex-col" : "flex-col"} ${
+        win ? "bg-blue-1" : "bg-red-1"
       }`}
     >
       <TableHead
@@ -24,7 +26,11 @@ export default function Table({
         objectives={objectives}
         gameStats={gameStats}
         team={team}
+        opponentTeam={opponentTeam}
         isSummonerTeam={isSummonerTeam}
+        kills={team.kills}
+        deaths={team.deaths}
+        assists={team.assists}
       />
       <TableBody
         win={win}
@@ -34,6 +40,7 @@ export default function Table({
         gameStats={gameStats}
         isSummonerTeam={isSummonerTeam}
       />
+      {/* <TableFoot objectives={objectives} win={win} /> */}
     </table>
   );
 }

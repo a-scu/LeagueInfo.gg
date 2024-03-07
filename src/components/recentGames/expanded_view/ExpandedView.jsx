@@ -20,6 +20,7 @@ export default function ExpandedView({
         gameStats={gameStats}
         team={summonerTeam}
         isSummonerTeam
+        opponentTeam={opponentTeam}
       />
 
       <Table
@@ -30,6 +31,7 @@ export default function ExpandedView({
         objectives={opponentTeam.objectives}
         gameStats={gameStats}
         team={opponentTeam}
+        opponentTeam={summonerTeam}
       />
 
       {/* <TeamsComparison

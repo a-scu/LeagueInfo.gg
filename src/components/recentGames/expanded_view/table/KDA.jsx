@@ -74,7 +74,7 @@ export default function KDA({
         <>
           <span
             className={`max-500:hidden max-sm:text-3xs text-2xs rounded-full w-fit ${
-              win ? "text-lb-500 dark:text-db-500" : "text-red-500"
+              win ? "text-main-6" : "text-main-6"
             }`}
           >
             {formattedLargestMultiKill}
@@ -82,7 +82,7 @@ export default function KDA({
 
           <span
             className={`500:hidden max-sm:text-3xs text-2xs rounded-full w-fit ${
-              win ? "text-lb-500 dark:text-db-500" : "text-red-500"
+              win ? "text-main-6" : "text-main-6"
             }`}
           >
             {responsiveFormattedLargestMultiKill}

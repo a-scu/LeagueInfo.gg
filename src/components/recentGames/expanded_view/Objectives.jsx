@@ -41,25 +41,19 @@ export default function Objectives({ win, objectives }) {
     },
   ];
 
-  // grid max-sm:grid-cols-[repeat(3,28px)] grid-cols-[repeat(3,32px)] grid-rows-2 gap-x-0.5 gap-y-1
-
-  // bg-lg-200 dark:bg-dg-200
-
   return (
-    <div className="flex rounded ">
+    <div className="flex gap-1 max-sm:gap-0.5">
       {render.map(({ Icon, name, kills }) => (
         <div
           key={name}
-          className={`flex max-sm:w-[26px] w-7 rounded items-center justify-end ${
-            name === "Tower" ? "gap-px" : "gap-0.5"
-          }`}
+          className={`flex items-center bg-main-3 rounded-sm p-0.5 max-sm:p-px`}
         >
           <Icon
-            className={`size-[11px] min-size-[11px] rounded-full ${
-              win ? "text-lb-500 dark:text-db-500" : "text-red-500"
-            } `}
+            className={`aspect-square ${
+              win ? "text-blue" : "text-red"
+            } size-3 max-sm:size-2.5`}
           />{" "}
-          <span className="font-normal text-black text-3xs dark:text-white max-sm:text-3xs ">
+          <span className="w-4 text-xs font-normal leading-none text-center max-sm:text-2xs text-main-6">
             {kills || 0}
           </span>
         </div>

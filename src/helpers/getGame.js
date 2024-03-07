@@ -4,7 +4,15 @@ import getTeams from "./getTeams";
 
 const API_KEY = process.env.RIOT_API_KEY;
 
-const getGame = async (gameId, puuid, CHAMPIONS, SPELLS, RUNES, ITEMS) => {
+const getGame = async (
+  gameId,
+  puuid,
+  CHAMPIONS,
+  SPELLS,
+  RUNES,
+  ITEMS,
+  summonerRanked
+) => {
   const res = await fetch(
     `https://americas.api.riotgames.com/lol/match/v5/matches/${gameId}?api_key=${API_KEY}`
   );
@@ -18,7 +26,8 @@ const getGame = async (gameId, puuid, CHAMPIONS, SPELLS, RUNES, ITEMS) => {
     CHAMPIONS,
     SPELLS,
     RUNES,
-    ITEMS
+    ITEMS,
+    summonerRanked
   );
 
   return {

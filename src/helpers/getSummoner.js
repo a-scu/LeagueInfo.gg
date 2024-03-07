@@ -69,6 +69,16 @@ export default async function getSummoner(search) {
   );
   const ITEMS = await items.json();
 
+  let ranked = await getRanked(summoner.id);
+  let recentGames = await getRecentGames(
+    summoner.puuid,
+    ranked,
+    CHAMPIONS,
+    SPELLS,
+    RUNES,
+    ITEMS
+  );
+
   return {
     ...summoner,
     name: summoner.gameName,
@@ -76,14 +86,8 @@ export default async function getSummoner(search) {
     previousName: summoner.name,
     level: summoner.summonerLevel,
     icon: `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_API_VERSION}/img/profileicon/${summoner.profileIconId}.png`,
-    ranked: await getRanked(summoner.id),
-    recentGames: await getRecentGames(
-      summoner.puuid,
-      CHAMPIONS,
-      SPELLS,
-      RUNES,
-      ITEMS
-    ),
+    ranked,
+    recentGames,
   };
 }
 
@@ -117,14 +121,21 @@ const getSummonerByPuuid = async (puuid) => {
 
 //
 
-const getRecentGames = async (puuid, CHAMPIONS, SPELLS, RUNES, ITEMS) => {
+const getRecentGames = async (
+  puuid,
+  ranked,
+  CHAMPIONS,
+  SPELLS,
+  RUNES,
+  ITEMS
+) => {
   const GAMES_TO_FETCH = 5;
 
   const recentGamesIds = await getRecentGamesIds(puuid, GAMES_TO_FETCH);
   const recentGames = await Promise.all(
     recentGamesIds.map(
       async (gameId) =>
-        await getGame(gameId, puuid, CHAMPIONS, SPELLS, RUNES, ITEMS)
+        await getGame(gameId, puuid, CHAMPIONS, SPELLS, RUNES, ITEMS, ranked)
     )
   );
 

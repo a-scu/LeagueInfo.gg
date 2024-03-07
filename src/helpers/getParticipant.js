@@ -9,7 +9,9 @@ const getParticipant = async (
   CHAMPIONS,
   SPELLS,
   RUNES,
-  ITEMS
+  ITEMS,
+  summonerPuuid,
+  summonerRanked
 ) => {
   let {
     puuid,
@@ -62,7 +64,15 @@ const getParticipant = async (
     neutralMinionsKilled,
     gameDuration
   );
-  let ranked = await getRanked(summonerId);
+
+  let ranked;
+
+  if (puuid === summonerPuuid) {
+    ranked = summonerRanked;
+  } else {
+    ranked = await getRanked(summonerId);
+  }
+
   let visionScorePerMinute = (visionScore / (gameDuration / 60)).toFixed(1);
   let goldPerMinute = (goldEarned / (gameDuration / 60)).toFixed(0);
 

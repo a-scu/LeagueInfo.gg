@@ -8,7 +8,8 @@ const getTeams = async (
   CHAMPIONS,
   SPELLS,
   RUNES,
-  ITEMS
+  ITEMS,
+  summonerRanked
 ) => {
   let summoner = participants.find(({ puuid }) => puuid === summonerPuuid);
 
@@ -65,7 +66,9 @@ const getTeams = async (
         CHAMPIONS,
         SPELLS,
         RUNES,
-        ITEMS
+        ITEMS,
+        summonerPuuid,
+        summonerRanked
       );
 
       team.kills += participant.kills;
