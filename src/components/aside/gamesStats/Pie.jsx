@@ -13,7 +13,7 @@ const Circle = ({ color, percentage }) => {
       stroke={strokePct !== circ ? color : ""}
       strokeWidth="1rem"
       strokeDasharray={circ}
-      strokeDashoffset={percentage ? strokePct : 0}
+      strokeDashoffset={percentage ? strokePct : strokePct}
     ></circle>
   );
 };
@@ -28,7 +28,7 @@ const Pie = ({ winrate }) => {
           <Circle color={"#5383E8"} percentage={winrate} />
         </g>
         <g transform={`rotate(${secondCircleRotation} ${"64 64"})`}>
-          <Circle color="#E84057" percentage={100 - winrate} />
+          <Circle color="#515163" percentage={100 - winrate} />
         </g>
       </svg>
 

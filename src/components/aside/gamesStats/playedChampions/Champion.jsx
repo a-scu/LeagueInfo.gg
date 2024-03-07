@@ -15,7 +15,7 @@ const Champion = ({ champion }) => {
 
   return (
     <>
-      <div className="flex-col hidden text-2xs">
+      {/* <div className="flex-col hidden text-2xs">
         <div className="mb-1.5 overflow-hidden rounded-full size-8 aspect-square">
           <img
             src={icon}
@@ -28,19 +28,19 @@ const Champion = ({ champion }) => {
         <span className="text-center text-main-6">
           {((games / 5) * 100).toFixed(0)}%
         </span>
-      </div>
+      </div> */}
 
-      <div className="flex items-center gap-2 text-2xs max-1126:flex-row-reverse">
-        <div className="overflow-hidden rounded-full size-7 min-size-7 aspect-square">
+      <div className="flex items-center gap-2 max-500:text-3xs text-2xs max-1126:flex-row-reverse">
+        <div className="overflow-hidden rounded-full max-500:size-6 size-7 aspect-square">
           <img
             src={icon}
             alt={name}
             loading="lazy"
-            className="object-cover bg-black rounded-full pointer-events-none size-7 min-size-7 aspect-square scale-115"
+            className="object-cover bg-black rounded-full pointer-events-none size-7 max-500:size-6 aspect-square scale-115"
           />
         </div>
 
-        <div className="flex flex-col max-1126:text-end">
+        <div className="flex flex-col max-1126:text-end max-500:gap-0.5">
           <span className={`font-medium ${kdaColor}`}>
             {kda === "Perfect" ? kda : `${kda}:1`} KDA
           </span>
