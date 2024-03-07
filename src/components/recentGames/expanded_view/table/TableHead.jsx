@@ -1,9 +1,9 @@
 export default function TableHead({ win, teamSide, isSummonerTeam }) {
   return (
     <thead
-      className={`max-[0px]:hidden flex w-full items-center max-sm:h-5 px-1 h-6 ${
-        win ? "border-blue-2" : "border-red-2"
-      } ${isSummonerTeam ? "border-b" : "border-y"}`}
+      className={`bg-blue max-[0px]:hidden flex w-full items-center max-sm:h-5 px-1 h-6 ${
+        win ? "bg-main-1 dark:bg-main-2" : "bg-main-1 dark:bg-main-2"
+      } ${isSummonerTeam ? "border-0" : "border-0"}`}
     >
       <tr className="flex items-center justify-between w-full text-center text-lg-500 dark:text-dg-500 text-3xs sm:text-2xs">
         <th className="max-sm:w-[209px] w-[231px] p-0 font-medium text-start flex items-center sm:gap-[5px] max-sm:justify-between">
@@ -50,7 +50,7 @@ export default function TableHead({ win, teamSide, isSummonerTeam }) {
           Wards
         </th>
 
-        <th className="flex items-center justify-center p-0 max-500:hidden w-9">
+        <th className="flex items-center justify-center p-0 font-medium max-500:hidden w-9">
           Gold
         </th>
       </tr>

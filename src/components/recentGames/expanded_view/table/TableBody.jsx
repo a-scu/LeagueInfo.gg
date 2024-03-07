@@ -99,10 +99,18 @@ export default function TableBody({
             ? "bg-[#47433f] text-white"
             : "border text-lg-500 dark:text-dg-500 border-lg-500 dark:border-dg-500";
 
+        // ${
+        //               index === 0 && isSummoner
+        //                 ? win
+        //                   ? "border-t border-t-blue-1"
+        //                   : "border-t border-t-red-1"
+        //                 : ""
+        //             }
+
         return (
           <tr
             key={participant.puuid}
-            className={`relative flex w-full p-1 justify-between items-center ${
+            className={`relative flex w-full p-1 justify-between items-center  ${
               isSummoner &&
               (win ? "bg-lb-200 dark:bg-db-300" : "bg-lr-200 dark:bg-dr-300")
             }`}

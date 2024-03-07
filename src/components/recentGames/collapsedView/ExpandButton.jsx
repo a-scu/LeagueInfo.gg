@@ -14,12 +14,12 @@ export default function ExpandButton({ win, gameId }) {
     if (!expanded) {
       expandedView.classList.remove("hidden");
       expandedView.classList.add("flex");
-      collapsedView.classList.add("border-b");
+      // collapsedView.classList.add("border-b");
       setExpanded(true);
     } else {
       expandedView.classList.remove("flex");
       expandedView.classList.add("hidden");
-      collapsedView.classList.remove("border-b");
+      // collapsedView.classList.remove("border-b");
       setExpanded(false);
     }
   };
