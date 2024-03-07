@@ -17,8 +17,8 @@ const GamesStats = ({ stats }) => {
   } = summoner;
 
   return (
-    <div className="max-360:grid-cols-[100px,40px,100px] max-500:grid-cols-[100px,112px,100px] grid-cols-[160px,112px,160px] max-1126:justify-between max-800:rounded-none grid gap-2 p-2 overflow-hidden rounded 1126:grid-cols-[1fr,112px] 1126:grid-rows-[fit,fit] bg-main-1">
-      <div className="flex flex-col flex-1 gap-2 max-500:gap-1">
+    <div className="max-360:grid-cols-[100px,40px,100px] max-500:grid-cols-[100px,102px,100px] grid-cols-[160px,112px,160px] max-1126:justify-between max-800:rounded-none grid gap-2 p-2 overflow-hidden rounded 1126:grid-cols-[1fr,112px] 1126:grid-rows-[fit,fit] bg-main-1">
+      <div className="flex flex-col flex-1 gap-2 ">
         <span className="text-xs text-main-6 max-500:hidden max-500:text-2xs">
           {games}G {wins}W {losses}L{" "}
           <span className="max-500:hiden">({winrate.toFixed(0)}%)</span>
@@ -35,8 +35,8 @@ const GamesStats = ({ stats }) => {
                 {wins}W {losses}L
               </span>
 
-              <div className="relative flex items-center w-full h-4 bg-red">
-                <div style={{ width: winrate }} className={`h-4 bg-blue`} />
+              <div className="relative flex items-center w-full h-3.5 bg-main-4">
+                <div style={{ width: winrate }} className={`h-3.5 bg-blue`} />
               </div>
             </div>
 
