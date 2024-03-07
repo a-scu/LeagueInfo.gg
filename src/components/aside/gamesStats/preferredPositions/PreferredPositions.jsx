@@ -69,10 +69,10 @@ const PreferredPositions = ({ positions, games }) => {
   return (
     <div className="flex flex-col gap-2">
       <span className="text-xs text-center max-500:text-2xs text-main-6">
-        <span className="max-500:hidden">Preferred</span> Position
+        <span className="max-360:hidden">Preferred</span> Position
       </span>
 
-      <div className="flex flex-col items-center justify-center gap-2 max-500:hidden">
+      <div className="flex flex-col items-center justify-center gap-2 max-360:hidden">
         <div className="flex gap-2">
           {POSITIONS.map(({ position, games, pct, Icon }) => (
             <Position key={position} games={games} pct={pct} Icon={Icon} />
@@ -80,7 +80,7 @@ const PreferredPositions = ({ positions, games }) => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center w-full h-full gap-1 500:hidden">
+      <div className="flex flex-col items-center justify-center w-full h-full gap-1 360:hidden">
         <preferredPosition.Icon className="size-8" />
         <span className="font-medium text-2xs text-main-6">
           {preferredPosition.pct}%
