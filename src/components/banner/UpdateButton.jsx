@@ -1,12 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
 const UpdateButton = () => {
-  const router = useRouter();
-
   const handleRefresh = () => {
-    router.refresh;
     console.log("recargando");
   };
 
