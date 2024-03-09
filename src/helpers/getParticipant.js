@@ -139,14 +139,12 @@ const getSpells = (spells, SPELLS) => {
 
 const getRunes = (perks, RUNES) => {
   const runes = perks.styles.map((perk) => {
-    const { slots, name, icon } = Object.values(RUNES).find(
-      ({ id }) => id === perk.style
-    );
+    const runeStyle = Object.values(RUNES).find(({ id }) => id === perk.style);
 
     const runes = [];
 
     perk.selections.forEach((selection) => {
-      const rune = slots.forEach((slot) => {
+      const rune = runeStyle?.slots.forEach((slot) => {
         slot.runes.forEach(({ id, name, icon }) => {
           if (id === selection.perk) {
             runes.push({
@@ -162,8 +160,8 @@ const getRunes = (perks, RUNES) => {
 
     return {
       style: {
-        name,
-        icon: `https://ddragon.leagueoflegends.com/cdn/img/${icon}`,
+        name: runeStyle?.name,
+        icon: `https://ddragon.leagueoflegends.com/cdn/img/${runeStyle?.icon}`,
       },
       runes,
     };
