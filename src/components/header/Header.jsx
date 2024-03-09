@@ -28,9 +28,9 @@ export default function Header() {
         .replace("#", "-")
         .replace(/\s/g, "")
         .toLowerCase();
-      push(`/${formattedSearch}`);
+      push(`/summoner/las/${formattedSearch}`);
     } else {
-      push(`/${search.replace(/\s/g, "").toLowerCase()}`);
+      push(`/summoner/las/${search.replace(/\s/g, "").toLowerCase()}`);
     }
   };
 

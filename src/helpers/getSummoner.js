@@ -69,10 +69,10 @@ export default async function getSummoner(search) {
   );
   ITEMS = await items.json();
 
-  let ranked = await getRanked(SUMMONER.id);
-  let recentGames = await getRecentGames(
+  SUMMONER.ranked = await getRanked(SUMMONER.id);
+  SUMMONER.recentGames = await getRecentGames(
     SUMMONER.puuid,
-    ranked,
+    SUMMONER.ranked,
     CHAMPIONS,
     SPELLS,
     RUNES,
@@ -88,8 +88,6 @@ export default async function getSummoner(search) {
     previousName: SUMMONER.name,
     level: SUMMONER.summonerLevel,
     icon: `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_API_VERSION}/img/profileicon/${SUMMONER.profileIconId}.png`,
-    ranked,
-    recentGames,
   };
 }
 
@@ -206,6 +204,53 @@ const getRankedGames = async (puuid) => {
   const CHAMPIONS_PLAYED = getChampionsPlayed(GAMES);
 
   return CHAMPIONS_PLAYED;
+};
+
+const getGames = async ({}) => {
+  const res = await fetch(
+    `https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?startTime=${SEASON_START}&queue=${QUEUE}&type=ranked&start=0&count=${COUNT}&api_key=${API_KEY}`
+  );
+  const ids = await res.json();
+
+  const GAMES = await Promise.all(
+    ids.map(async (gameId) => {
+      const res = await fetch(
+        `https://americas.api.riotgames.com/lol/match/v5/matches/${gameId}?api_key=${API_KEY}`
+      );
+      const game = await res.json();
+
+      const { gameDuration, gameEndTimestamp } = game.info;
+
+      const {
+        win,
+        championId,
+        championName,
+        kills,
+        deaths,
+        assists,
+        totalMinionsKilled,
+        neutralMinionsKilled,
+        visionScore,
+      } = game.info.participants.find(({ puuid }) => puuid === SUMMONER.puuid);
+
+      if (gameEndTimestamp > lastRankedGameEndTimestamp)
+        lastRankedGameEndTimestamp = gameEndTimestamp;
+
+      const cs = totalMinionsKilled + neutralMinionsKilled;
+
+      return {
+        gameDuration,
+        win,
+        champId: championId,
+        champName: championName,
+        kills,
+        deaths,
+        assists,
+        cs,
+        vision: visionScore,
+      };
+    })
+  );
 };
 
 const getChampionsPlayed = (GAMES) => {

@@ -1,6 +1,7 @@
+import UpdateButton from "./banner/UpdateButton";
 import Star from "./icons/Star";
 
-export default function Banner({ name, tagLine, previousName, icon, level }) {
+export default async function Banner({ name, tagLine, icon, level }) {
   return (
     <div className="flex flex-col items-center w-full p-2 py-4 text-center bg-white dark:bg-dg-0">
       <div className="relative flex items-center justify-center">
@@ -24,9 +25,7 @@ export default function Banner({ name, tagLine, previousName, icon, level }) {
         {name} <span className="font-normal text-main-6">#{tagLine}</span>
       </h3>
 
-      <button className="flex items-center text-white justify-center w-24 max-800:w-20 h-8 mt-1.5 text-sm max-800:text-xs text-center rounded bg-db-500">
-        Update
-      </button>
+      <UpdateButton />
     </div>
   );
 }

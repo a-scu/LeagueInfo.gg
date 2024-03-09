@@ -4,14 +4,14 @@ import RecentGames from "@/components/recentGames/RecentGames";
 
 import getSummoner from "@/helpers/getSummoner";
 
-export default async function Search({ params }) {
+const Search = async ({ params }) => {
   const search = params.search;
 
-  const summonerData = await getSummoner(search);
+  let summoner = await getSummoner(search);
 
-  if (summonerData) {
+  if (summoner) {
     const { name, tagLine, previousName, icon, level, ranked, recentGames } =
-      summonerData;
+      summoner;
 
     return (
       <div className="flex flex-col items-center gap-2 mb-2">
@@ -35,4 +35,6 @@ export default async function Search({ params }) {
       </div>
     );
   }
-}
+};
+
+export default Search;
