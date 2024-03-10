@@ -56,13 +56,6 @@ export default function Header() {
       <div className="w-full p-2">
         <div className="flex flex-col items-center w-full max-w-screen-md gap-2 mx-auto">
           <div className="flex flex-col gap-0.5">
-            {/* <Link
-              href={"/"}
-              className="text-xl font-bold text-white max-sm:text-lg"
-            >
-              LeagueInfo.gg
-            </Link> */}
-
             <img
               src="https://meta-static.op.gg/logo/image/ddac05b4e86440c3ef666a1bf5ec0326.png?image=q_auto,f_webp,w_392&v=1708681571653"
               alt=""
@@ -70,7 +63,7 @@ export default function Header() {
             />
           </div>
 
-          <div className="flex w-full overflow-hidden bg-white rounded">
+          <div className="flex w-full h-8 overflow-hidden bg-white rounded">
             <RegionButton>LAS</RegionButton>
 
             <div className="relative flex items-center w-full">
@@ -79,7 +72,7 @@ export default function Header() {
                 type="text"
                 value={search}
                 onChange={handleOnChange}
-                className="w-full h-8 px-3 text-sm text-black bg-transparent sm:h-9"
+                className="w-full px-3 text-sm text-black bg-transparent"
               />
 
               {!search && <InputLabel />}

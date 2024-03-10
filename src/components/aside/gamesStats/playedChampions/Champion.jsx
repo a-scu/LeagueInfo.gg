@@ -15,12 +15,12 @@ const Champion = ({ champion }) => {
 
   return (
     <div className="flex items-center gap-2 text-2xs max-1126:flex-row-reverse">
-      <div className="overflow-hidden rounded-full size-[30px] min-size-[30px] aspect-square">
+      <div className="overflow-hidden rounded-full size-7-5 min-size-7-5 aspect-square">
         <img
           src={icon}
           alt={name}
           loading="lazy"
-          className="object-cover bg-black rounded-full pointer-events-none size-[30px] min-size-[30px] aspect-square scale-115"
+          className="object-cover bg-black rounded-full pointer-events-none size-7-5 min-size-7-5 aspect-square scale-115"
         />
       </div>
 
@@ -30,9 +30,9 @@ const Champion = ({ champion }) => {
         </span>
 
         <div>
-          <span className="text-blue">{wins}W</span>{" "}
-          <span className="text-red">{losses}L</span>{" "}
-          <span className="text-main-6">{winrate.toFixed(0)}%</span>
+          <span className="text-main-5">{wins}W</span>{" "}
+          <span className="text-main-5">{losses}L</span>{" "}
+          <span className="text-main-5">{winrate.toFixed(0)}%</span>
         </div>
       </div>
     </div>

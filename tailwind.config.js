@@ -222,6 +222,10 @@ module.exports = {
           minWidth: "1.75rem",
           minHeight: "1.75rem",
         },
+        ".min-size-7-5": {
+          minWidth: "1.875rem",
+          minHeight: "1.875rem",
+        },
         ".min-size-8": {
           minWidth: "2rem",
           minHeight: "2rem",
@@ -269,6 +273,10 @@ module.exports = {
         ".size-6-5": {
           width: "1.625rem",
           height: "1.625rem",
+        },
+        ".size-7-5": {
+          width: "1.875rem",
+          height: "1.875rem",
         },
         ".size-8-5": {
           width: "2.125rem",

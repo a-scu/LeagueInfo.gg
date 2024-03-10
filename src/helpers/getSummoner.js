@@ -40,7 +40,7 @@ let SUMMONER, CHAMPIONS, SPELLS, RUNES, ITEMS;
 export default async function getSummoner(search) {
   if (!search) throw new Error("Empty search");
 
-  noStore();
+  // noStore();
 
   if (search.includes("-")) {
     const [name, tag] = search.split("-");

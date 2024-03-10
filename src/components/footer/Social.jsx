@@ -24,7 +24,7 @@ const SOCIAL = [
 
 export default function Social() {
   return (
-    <div className="grid grid-cols-3">
+    <div className="flex gap-8">
       {SOCIAL.map(({ name, href, Icon }) => (
         <Link
           key={name}
