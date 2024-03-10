@@ -2,6 +2,8 @@ import getRanked from "./getRanked";
 import getGame from "./getGame";
 import getGamesStats from "./getGamesStats";
 
+import { unstable_noStore as noStore } from "next/cache";
+
 // const PLATFORM_ROUTING_VALUES = {
 //   BR1: "br1.api.riotgames.com",
 //   EUN1: "eun1.api.riotgames.com",
@@ -37,6 +39,8 @@ let SUMMONER, CHAMPIONS, SPELLS, RUNES, ITEMS;
 
 export default async function getSummoner(search) {
   if (!search) throw new Error("Empty search");
+
+  noStore();
 
   if (search.includes("-")) {
     const [name, tag] = search.split("-");
