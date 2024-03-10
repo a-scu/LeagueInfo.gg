@@ -67,9 +67,9 @@ const PreferredPositions = ({ positions, games }) => {
   const preferredPosition = getPreferredPosition();
 
   return (
-    <div className="flex flex-col gap-2 1126:pr-2 1126:py-2">
+    <div className="flex flex-col items-center gap-2 1126:pr-2 1126:py-2">
       <span className="text-xs text-center max-500:text-2xs text-main-6">
-        <span className="max-360:hidden">Preferred</span> Position
+        Preferred Position
       </span>
 
       <div className="flex flex-col items-center justify-center h-full gap-2 max-360:hidden">

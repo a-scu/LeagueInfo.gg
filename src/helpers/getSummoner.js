@@ -83,7 +83,7 @@ export default async function getSummoner(search) {
     ITEMS
   );
 
-  const rankedGames = getRankedGames(SUMMONER.puuid);
+  SUMMONER.rankedGames = await getRankedGames(SUMMONER.puuid);
 
   return {
     ...SUMMONER,
@@ -184,6 +184,7 @@ const getRankedGames = async (puuid) => {
         totalMinionsKilled,
         neutralMinionsKilled,
         visionScore,
+        teamPosition,
       } = game.info.participants.find(({ puuid }) => puuid === SUMMONER.puuid);
 
       if (gameEndTimestamp > lastRankedGameEndTimestamp)
@@ -201,6 +202,7 @@ const getRankedGames = async (puuid) => {
         assists,
         cs,
         vision: visionScore,
+        position: teamPosition,
       };
     })
   );
@@ -235,6 +237,7 @@ const getGames = async ({}) => {
         totalMinionsKilled,
         neutralMinionsKilled,
         visionScore,
+        teamPosition,
       } = game.info.participants.find(({ puuid }) => puuid === SUMMONER.puuid);
 
       if (gameEndTimestamp > lastRankedGameEndTimestamp)
@@ -252,6 +255,7 @@ const getGames = async ({}) => {
         assists,
         cs,
         vision: visionScore,
+        position: teamPosition,
       };
     })
   );
@@ -289,6 +293,7 @@ const getChampionsPlayed = (GAMES) => {
         ...INITIAL_CHAMPION,
         champName: game.champName,
         champIcon,
+        position: game.position,
       };
     }
 
@@ -305,5 +310,13 @@ const getChampionsPlayed = (GAMES) => {
     CHAMPIONS_PLAYED[game.champName] = CHAMPION;
   });
 
-  return CHAMPIONS_PLAYED;
+  const CHAMPIONS_ARRAY = Object.keys(CHAMPIONS_PLAYED).map(
+    (key) => CHAMPIONS_PLAYED[key]
+  );
+
+  const CHAMPIONS_ARRAY_SORTED = CHAMPIONS_ARRAY.sort(
+    (a, b) => b.games - a.games
+  );
+
+  return CHAMPIONS_ARRAY_SORTED;
 };
