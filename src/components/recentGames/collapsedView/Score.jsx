@@ -13,7 +13,11 @@ export default function Score({ largestMultiKill, score, win }) {
       : "Pentakill";
 
   return (
-    <div className="flex gap-0.5 text-white items-center text-2xs sm:text-xs">
+    <div
+      className={`flex gap-0.5 text-white items-center text-2xs sm:text-xs border-l pl-0.5 800:pl-1 ${
+        win ? "border-l-db-300" : "border-l-dr-300"
+      }`}
+    >
       <span className={`px-2 py-0.5 rounded-full w-fit ${bgColor}`}>{score}</span>
 
       {largestMultiKill > 1 && (

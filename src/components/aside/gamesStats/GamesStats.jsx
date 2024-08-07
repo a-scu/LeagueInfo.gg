@@ -23,7 +23,7 @@ const GamesStats = () => {
               <div className="500:hidden relative items-center justify-center w-[100px] min-w-[100px] flex mb-1.5">
                 <span className="absolute z-10 text-white text-3xs">···</span>
 
-                <div className="relative flex items-center w-full h-3.5 bg-gray-4">
+                <div className="relative flex items-center w-full h-3.5 bg-gray-4 rounded-sm">
                   <div style={{ width: 0 }} className={`h-3.5 bg-blue`} />
                 </div>
               </div>
@@ -93,7 +93,7 @@ const GamesStats = () => {
                 {wins}W {losses}L {winrate}%
               </span>
 
-              <div className="relative flex items-center w-full h-3.5 bg-gray-4">
+              <div className="relative flex items-center w-full h-3.5 bg-gray-4 rounded-sm overflow-hidden">
                 <div style={{ width: winrate }} className={`h-3.5 bg-blue`} />
               </div>
             </div>
