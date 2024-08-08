@@ -1,6 +1,4 @@
 export default function Items({ win, items, isSummoner }) {
-  console.log("itemssadasd", items);
-
   return (
     <div className="flex gap-px w-fit">
       {items.map((item, i) =>

@@ -6,7 +6,14 @@ export default function KDA({ teamKills, kills, deaths, assists, largestMultiKil
 
   const kda = deaths === 0 ? 0 : ((kills + assists) / deaths).toFixed(2);
 
-  const kdaColor = kda < 3 ? "text-gray-6" : kda < 5 && kda >= 3 ? "text-teal" : "text-orange";
+  const kdaColor =
+    kda < 3
+      ? "text-gray-6"
+      : kda < 4 && kda >= 3
+      ? "text-teal"
+      : kda < 5 && kda >= 4
+      ? "text-kdaBlue"
+      : "text-orange";
 
   const formattedLargestMultiKill =
     largestMultiKill < 2

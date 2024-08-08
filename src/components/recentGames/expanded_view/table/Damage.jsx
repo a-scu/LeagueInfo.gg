@@ -47,7 +47,11 @@ export default function Damage({
       <div className="flex-col max-400:hidden 800:hidden gap-1.5 flex text-3xs">
         <div className="w-[50px] min-w-[50px] flex rounded-sm overflow-hidden">
           <div className="relative flex w-full items-center h-[12px] bg-gray-2">
-            <span className="absolute left-0.5 text-white line-clamp-1">
+            <span
+              className={`absolute left-0.5 ${
+                +damageToChampions > 0 ? "text-white" : "text-gray-6"
+              } line-clamp-1`}
+            >
               {formatDamage(damageToChampions)}
             </span>
             <div
@@ -59,7 +63,11 @@ export default function Damage({
 
         <div className="w-[50px] min-w-[50px] flex rounded-sm overflow-hidden">
           <div className="relative flex w-full items-center h-[12px] bg-gray-2">
-            <span className="absolute left-0.5 text-white line-clamp-1">
+            <span
+              className={`absolute left-0.5 ${
+                +damageTaken > 0 ? "text-white" : "text-gray-6"
+              } line-clamp-1`}
+            >
               {formatDamage(damageTaken)}
             </span>
             <div style={{ width: dmgTakenPct || 0 }} className="h-[12px] bg-gray-5" />
@@ -70,7 +78,11 @@ export default function Damage({
       <div className="flex-col hidden gap-1.5 max-400:flex text-3xs">
         <div className="flex w-10 min-w-10 rounded-sm overflow-hidden">
           <div className="relative flex w-full items-center h-[12px] bg-gray-2">
-            <span className="absolute left-0.5 text-white line-clamp-1">
+            <span
+              className={`absolute left-0.5 ${
+                +damageToChampions > 0 ? "text-white" : "text-gray-6"
+              } line-clamp-1`}
+            >
               {formatDamage(damageToChampions)}
             </span>
             <div
@@ -82,7 +94,11 @@ export default function Damage({
 
         <div className="flex w-10 min-w-10 rounded-sm overflow-hidden">
           <div className="relative flex w-full items-center h-[12px] bg-gray-2">
-            <span className="absolute left-0.5 text-white line-clamp-1">
+            <span
+              className={`absolute left-0.5 ${
+                +damageTaken > 0 ? "text-white" : "text-gray-6"
+              } line-clamp-1`}
+            >
               {formatDamage(damageTaken)}
             </span>
             <div style={{ width: responsiveDmgTakenPct || 0 }} className="h-[12px] bg-gray-5" />

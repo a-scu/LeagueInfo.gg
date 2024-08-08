@@ -50,6 +50,7 @@ export default {
 
         orange: "#f06f00",
         teal: "#00bba3",
+        kdaBlue: "#0093ff",
 
         bronze: "#7c6750",
         silver: "#515163",

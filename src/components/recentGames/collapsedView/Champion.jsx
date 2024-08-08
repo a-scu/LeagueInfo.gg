@@ -1,6 +1,4 @@
 export default function Champion({ champName, champLevel, champIcon }) {
-  console.log(champIcon);
-
   return (
     <div className="relative">
       <div className="overflow-hidden rounded-full max-sm:size-11-5 max-sm:min-size-11-5 size-12-5 min-size-12-5 aspect-square">

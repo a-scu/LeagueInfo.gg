@@ -1,7 +1,14 @@
 export default function KDA({ win, kills, deaths, assists, teamKills }) {
   const kda = deaths === 0 ? 0 : ((kills + assists) / deaths).toFixed(2);
 
-  const kdaColor = kda < 3 ? "text-gray-6" : kda < 5 && kda >= 3 ? "text-teal" : "text-orange";
+  const kdaColor =
+    kda < 3
+      ? "text-gray-6"
+      : kda < 4 && kda >= 3
+      ? "text-teal"
+      : kda < 5 && kda >= 4
+      ? "text-kdaBlue"
+      : "text-orange";
 
   const pKill =
     kills === 0 && assists === 0
@@ -14,7 +21,7 @@ export default function KDA({ win, kills, deaths, assists, teamKills }) {
       <span className="font-medium leading-none text-white max-sm:text-sm max-sm:leading-none">
         {kills}
         {" / "}
-        <span className={`${win ? "text-db-500" : "text-red"}`}>{deaths}</span>
+        <span className="text-gray-6">{deaths}</span>
         {" / "}
         {assists}
       </span>
@@ -24,9 +31,7 @@ export default function KDA({ win, kills, deaths, assists, teamKills }) {
         <span className={`text-xs max-sm:text-2xs font-medium ${kdaColor}`}>{kda}:1 KDA</span>
 
         {/* P/Kill */}
-        <span className={`text-2xs max-sm:text-2xs ${win ? "text-db-500" : "text-red"}`}>
-          P/Kill {pKill}%
-        </span>
+        <span className={`text-2xs max-sm:text-2xs text-gray-6`}>P/Kill {pKill}%</span>
       </div>
     </div>
   );

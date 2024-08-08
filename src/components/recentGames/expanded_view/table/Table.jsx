@@ -40,7 +40,7 @@ export default function Table({
         gameStats={gameStats}
         isSummonerTeam={isSummonerTeam}
       />
-      <TableFoot objectives={objectives} win={win} />
+      <TableFoot objectives={objectives} win={win} gameStats={gameStats} team={team} />
     </table>
   );
 }

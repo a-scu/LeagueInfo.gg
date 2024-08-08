@@ -1,7 +1,7 @@
 const Position = ({ games, pct, Icon, fetchingGamesStats }) => {
   return (
     <div className="flex flex-col gap-1">
-      <div className="relative w-3.5 h-[50px] bg-gray-4 rounded-sm">
+      <div className="relative w-3.5 h-[50px] bg-gray-4 rounded-sm overflow-hidden">
         <div
           style={{ height: `${pct}%` }}
           className="absolute bottom-0 flex justify-center w-3.5 bg-blue"

@@ -31,12 +31,12 @@ const GamesStats = () => {
               <div className="text-xs font-medium max-500:text-2xs text-gray-6">
                 <span>···</span>
                 {" / "}
-                <span className="text-red">···</span>
+                <span className="text-gray-6">···</span>
                 {" / "}
                 <span>···</span>
               </div>
               <p className="text-sm font-medium text-gray-6">···</p>
-              <p className="text-xs max-500:text-2xs text-red">···</p>
+              <p className="text-xs max-500:text-2xs text-gray-6">···</p>
             </div>
           </div>
         </div>
@@ -59,8 +59,6 @@ const GamesStats = () => {
 
   if (!fetchingGamesStats && !gamesStats) return <span>Error fetching recent games</span>;
 
-  console.log(gamesStats);
-
   if (!gamesStats) return null;
   const { summoner } = gamesStats;
   const {
@@ -74,6 +72,15 @@ const GamesStats = () => {
     kdaPerGame,
     pKillPerGame,
   } = summoner;
+
+  const kdaColor =
+    kdaPerGame < 3
+      ? "text-gray-6"
+      : kdaPerGame < 4 && kdaPerGame >= 3
+      ? "text-teal"
+      : kdaPerGame < 5 && kdaPerGame >= 4
+      ? "text-kdaBlue"
+      : "text-orange";
 
   return (
     <div className="max-360:grid-cols-[100px,40px,100px] max-500:grid-cols-[100px,102px,100px] grid-cols-[160px,102px,160px] max-1126:justify-evenly max-500:justify-between max-800:rounded-none grid max-1126:gap-2 max-1126:p-2 overflow-hidden rounded 1126:grid-cols-[1fr,110px] 1126:grid-rows-[fit,fit] bg-gray-1">
@@ -101,12 +108,12 @@ const GamesStats = () => {
             <div className="text-xs font-medium max-500:text-2xs text-gray-6">
               <span>{killsPerGame}</span>
               {" / "}
-              <span className="text-red">{deathsPerGame}</span>
+              <span className="text-gray-6">{deathsPerGame}</span>
               {" / "}
               <span>{assistsPerGame}</span>
             </div>
-            <p className="text-sm font-medium text-gray-6">{kdaPerGame}:1 KDA</p>
-            <p className="text-xs max-500:text-2xs text-red">P/Kill {pKillPerGame}%</p>
+            <p className={`text-sm font-medium text-gray-6 ${kdaColor}`}>{kdaPerGame}:1 KDA</p>
+            <p className="text-xs max-500:text-2xs text-gray-6">P/Kill {pKillPerGame}%</p>
           </div>
         </div>
       </div>

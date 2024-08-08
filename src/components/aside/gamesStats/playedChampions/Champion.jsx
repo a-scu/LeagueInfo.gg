@@ -19,8 +19,10 @@ const Champion = ({ champion, fetchingGamesStats }) => {
   const getKdaColor = (kda) => {
     if (kda < 3) {
       return "text-gray-6";
-    } else if (kda >= 3 && kda < 5) {
+    } else if (kda >= 3 && kda < 4) {
       return "text-teal";
+    } else if (kda >= 4 && kda < 5) {
+      return "text-kdaBlue";
     } else {
       return "text-orange";
     }
@@ -47,7 +49,9 @@ const Champion = ({ champion, fetchingGamesStats }) => {
         <div>
           <span className="text-gray-5">{wins}W</span>{" "}
           <span className="text-gray-5">{losses}L</span>{" "}
-          <span className="text-gray-5">{winrate.toFixed(0)}%</span>
+          <span className={`${winrate >= 80 ? "text-red" : "text-gray-5"}`}>
+            {winrate.toFixed(0)}%
+          </span>
         </div>
       </div>
     </div>

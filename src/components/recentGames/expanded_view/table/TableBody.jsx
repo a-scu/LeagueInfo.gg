@@ -18,8 +18,6 @@ export default function TableBody({
   gameStats,
   isSummonerTeam,
 }) {
-  console.log(participants);
-
   return (
     <tbody className={`flex flex-col`}>
       {participants.map((participant, index) => {
@@ -97,14 +95,6 @@ export default function TableBody({
             ? "bg-[#47433f] text-white"
             : "border text-gray-6 border-gray-6"
           : "border text-gray-6 border-gray-6";
-
-        // ${
-        //               index === 0 && isSummoner
-        //                 ? win
-        //                   ? "border-t border-t-blue-1"
-        //                   : "border-t border-t-red-1"
-        //                 : ""
-        //             }
 
         return (
           <tr
