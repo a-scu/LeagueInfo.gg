@@ -29,12 +29,7 @@ export default function CollapsedView({
       <Decoration win={summoner.win} />
 
       <div className="flex items-center flex-1 px-1 max-330:py-1 sm:px-2">
-        <GameInfo
-          win={summoner.win}
-          queue={queue}
-          gameDuration={gameDuration}
-          gameAge={gameAge}
-        />
+        <GameInfo win={summoner.win} queue={queue} gameDuration={gameDuration} gameAge={gameAge} />
 
         <div className="flex flex-col flex-1 gap-1">
           <div className="flex ">

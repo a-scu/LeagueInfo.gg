@@ -1,7 +1,7 @@
 export default function Participants({ win, summonerPuuid, summonerTeam, opponentTeam }) {
   return (
     <div
-      className={`max-410:pl-0 max-410:border-l-0 max-330:hidden flex gap-1 max-450:gap-0.5 py-1 ${
+      className={`max-410:pl-0 max-410:border-l-0 max-330:hidden flex gap-1 max-450:gap-0.5 max-800:pt-[5px] py-1 ${
         win ? "border-db-300" : "border-dr-300"
       }`}
     >

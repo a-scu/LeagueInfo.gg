@@ -24,7 +24,7 @@ export default function QueueTypes() {
           scrollbarWidth: "none",
           msOverflowStyle: "none",
         }}
-        className="flex gap-2 max-500:gap-0.5 max-800:bg-gray-1 max-800:overflow-x-scroll"
+        className="flex gap-2 max-800:gap-0.5 max-800:bg-gray-1 max-800:overflow-x-scroll"
       >
         {QUEUE_TYPES.map(({ id, title }) => (
           <button
@@ -35,7 +35,9 @@ export default function QueueTypes() {
             className={`max-800:bg-gray-1 border max-800:border-2 max-500:text-2xs border-gray-1 min-w-fit rounded py-1.5 text-xs px-3 ${
               fetchingRecentGames && "opacity-50"
             } ${
-              queueType === id ? "max-800:bg-gray-3 bg-gray-1 text-white" : "bg-gray-3 text-gray-6"
+              !fetchingRecentGames && queueType === id
+                ? "max-800:bg-gray-3 bg-gray-1 text-white"
+                : "bg-gray-3 text-gray-6"
             } ${!fetchingRecentGames && queueType !== id && "hover:bg-gray-7"}`}
           >
             {title}
