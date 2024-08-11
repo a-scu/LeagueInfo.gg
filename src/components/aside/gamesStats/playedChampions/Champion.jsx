@@ -12,7 +12,7 @@ const Champion = ({ champion, fetchingGamesStats, skeleton }) => {
           </div>
         ) : (
           <div className="overflow-hidden rounded-full size-7-5 min-size-7-5 aspect-square">
-            <div className="object-cover max-500:bg-gray-2 bg-gray-7  border-0 500:border-4 border-gray-2 rounded-full pointer-events-none size-7-5 min-size-7-5 aspect-square" />
+            <div className="object-cover max-500:bg-gray-2 bg-gray-2  border-0 500:border-4 border-gray-2 rounded-full pointer-events-none size-7-5 min-size-7-5 aspect-square" />
           </div>
         )}
 

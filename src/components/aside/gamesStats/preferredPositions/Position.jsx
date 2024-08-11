@@ -22,7 +22,7 @@ const Position = ({ games, pct, Icon, fetchingGamesStats }) => {
         </div>
       </div>
       {fetchingGamesStats ? (
-        <div className="size-3.5 rounded-sm bg-gray-2" />
+        <div className="size-3.5 rounded-full bg-gray-2" />
       ) : (
         <Icon
           loading={fetchingGamesStats}

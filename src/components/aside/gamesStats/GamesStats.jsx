@@ -10,52 +10,54 @@ const GamesStats = () => {
 
   if (fetchingGamesStats)
     return (
-      <div className=" max-360:grid-cols-[100px,40px,100px] gap-x-2 max-500:grid-cols-[100px,102px,100px] grid-cols-[160px,102px,160px] max-1126:justify-evenly max-500:justify-between max-800:rounded-none grid max-1126:gap-2 max-1126:p-2 overflow-hidden rounded 1126:grid-cols-[1fr,110px] 1126:grid-rows-[fit,fit] bg-gray-1">
-        <div className="flex flex-col flex-1 gap-2 1126:pl-2 1126:py-2">
-          <div className="h-4 max-500:h-3.5 flex items-center w-full">
-            <div className="w-full bg-gray-2 rounded-full max-500:h-1.5 h-2" />
-          </div>
+      <div className="bg-gray-1 rounded overflow-hidden">
+        <div className=" max-360:grid-cols-[100px,40px,100px] gap-x-2 max-500:grid-cols-[100px,102px,100px] grid-cols-[160px,102px,160px] max-1126:justify-evenly max-500:justify-between max-800:rounded-none grid max-1126:gap-2 max-1126:p-2 1126:grid-cols-[1fr,110px] 1126:grid-rows-[fit,fit] animate-pulse">
+          <div className="flex flex-col flex-1 gap-2 1126:pl-2 1126:py-2">
+            <div className="h-4 max-500:h-3.5 flex items-center w-full">
+              <div className="w-full bg-gray-2 rounded-full max-500:h-1.5 h-2" />
+            </div>
 
-          <div className="flex items-center h-full gap-2">
-            <Pie fetchingGamesStats={fetchingGamesStats} winrate={0} />
+            <div className="flex items-center h-full gap-2">
+              <Pie fetchingGamesStats={fetchingGamesStats} winrate={0} />
 
-            <div className="flex flex-col">
-              <div className="500:hidden relative items-center justify-center w-[100px] min-w-[100px] flex mb-1.5">
-                <span className="absolute z-10 text-white text-3xs"></span>
+              <div className="flex flex-col">
+                <div className="500:hidden relative items-center justify-center w-[100px] min-w-[100px] flex mb-1.5">
+                  <span className="absolute z-10 text-white text-3xs"></span>
 
-                <div className="relative flex items-center w-full h-3.5 bg-gray-2 rounded-sm">
-                  <div style={{ width: 0 }} className={`h-3.5 bg-blue`} />
+                  <div className="relative flex items-center w-full h-3.5 bg-gray-2 rounded-sm">
+                    <div style={{ width: 0 }} className={`h-3.5 bg-blue`} />
+                  </div>
                 </div>
-              </div>
 
-              <div className="h-4 max-500:h-3.5 flex items-center w-full">
-                <div className="w-20 bg-gray-2 rounded-full max-500:h-1.5 h-2" />
-              </div>
+                <div className="h-4 max-500:h-3.5 flex items-center w-full">
+                  <div className="w-20 bg-gray-2 rounded-full max-500:h-1.5 h-2" />
+                </div>
 
-              <div className="h-5 flex items-center w-full">
-                <div className="w-14 bg-gray-2 rounded-full h-2.5" />
-              </div>
+                <div className="h-5 flex items-center w-full">
+                  <div className="w-14 bg-gray-2 rounded-full h-2.5" />
+                </div>
 
-              <div className="h-4 max-500:h-3.5 flex items-center w-full">
-                <div className="w-10 bg-gray-2 rounded-full max-500:h-1.5 h-2" />
+                <div className="h-4 max-500:h-3.5 flex items-center w-full">
+                  <div className="w-10 bg-gray-2 rounded-full max-500:h-1.5 h-2" />
+                </div>
               </div>
             </div>
           </div>
+
+          <PreferredPositions
+            positions={{
+              TOP: 0,
+              JUNGLE: 0,
+              MIDDLE: 0,
+              BOTTOM: 0,
+              UTILITY: 0,
+            }}
+            fetchingGamesStats={fetchingGamesStats}
+            games={0}
+          />
+
+          <PlayedChampions fetchingGamesStats={fetchingGamesStats} />
         </div>
-
-        <PreferredPositions
-          positions={{
-            TOP: 0,
-            JUNGLE: 0,
-            MIDDLE: 0,
-            BOTTOM: 0,
-            UTILITY: 0,
-          }}
-          fetchingGamesStats={fetchingGamesStats}
-          games={0}
-        />
-
-        <PlayedChampions fetchingGamesStats={fetchingGamesStats} />
       </div>
     );
 

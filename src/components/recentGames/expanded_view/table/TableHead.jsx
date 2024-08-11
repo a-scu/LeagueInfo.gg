@@ -15,7 +15,7 @@ export default function TableHead({
 }) {
   return (
     <thead className={`max-[0px]:hidden flex w-full flex-col items-center bg-main-4 gap-px`}>
-      <tr className="flex items-center justify-between w-full h-6 px-1 text-center bg-gray-1 max-sm:h-6 text-gray-6 text-3xs sm:text-2xs">
+      <tr className="flex items-center justify-between w-full h-6 px-1 text-center bg-gray-2 max-sm:h-6 text-gray-6 text-3xs sm:text-2xs">
         <th className="max-sm:w-[209px] w-[231px] p-0 font-normal text-start flex items-center sm:gap-[5px] justify-between">
           <span className={`leading-none ${win ? "text-blue" : "text-red"}`}>
             {win ? "Victory" : "Defeat"}

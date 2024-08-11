@@ -33,7 +33,7 @@ const Pie = ({ winrate, fetchingGamesStats }) => {
       </svg>
 
       {fetchingGamesStats ? (
-        <div className="bg-gray-7 rounded-full size-12 absolute" />
+        <div className="bg-gray-2 rounded-full size-12 absolute" />
       ) : (
         <span
           className={`absolute text-sm leading-none text-center font-bold ${
