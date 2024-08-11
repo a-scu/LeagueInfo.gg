@@ -28,17 +28,21 @@ const Pie = ({ winrate, fetchingGamesStats }) => {
           <Circle color={"#5383E8"} percentage={winrate} />
         </g>
         <g transform={`rotate(${secondCircleRotation} ${"64 64"})`}>
-          <Circle color={"#515163"} percentage={100 - winrate} />
+          <Circle color={fetchingGamesStats ? "#282830" : "#515163"} percentage={100 - winrate} />
         </g>
       </svg>
 
-      <span
-        className={`absolute text-sm leading-none text-center font-bold ${
-          winrate === 0 ? "text-red" : "text-db-500"
-        }`}
-      >
-        {fetchingGamesStats ? "···" : winrate.toFixed(0) + "%"}
-      </span>
+      {fetchingGamesStats ? (
+        <div className="bg-gray-7 rounded-full size-12 absolute" />
+      ) : (
+        <span
+          className={`absolute text-sm leading-none text-center font-bold ${
+            winrate === 0 ? "text-red" : "text-db-500"
+          }`}
+        >
+          {winrate.toFixed(0)}%
+        </span>
+      )}
     </div>
   );
 };

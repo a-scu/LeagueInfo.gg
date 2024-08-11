@@ -35,7 +35,9 @@ const getGamesStats = (GAMES) => {
   const SUMMONER_TEAM = STATS.summonerTeam;
   const CHAMPIONS = SUMMONER.champions;
 
-  GAMES.forEach(({ gameDurationMiliseconds, summoner, summonerTeam }) => {
+  GAMES.forEach(({ error, gameDurationMiliseconds, summoner, summonerTeam }) => {
+    if (error) return;
+
     const {
       champName,
       champIcon,
@@ -62,7 +64,7 @@ const getGamesStats = (GAMES) => {
     SUMMONER.cs += cs;
     SUMMONER.vision += visionScore;
     SUMMONER.gold += gold;
-    SUMMONER.positions[position] += 1;
+    if (position) SUMMONER.positions[position] += 1;
 
     // Team
 

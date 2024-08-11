@@ -5,8 +5,8 @@ const PlayedChampions = ({ champions, fetchingGamesStats }) => {
     return (
       <div className="flex flex-col gap-2 border-t-gray-3 1126:p-2 1126:col-span-2 1126:pt-2 1126:border-t max-1126:items-end">
         <div className="flex flex-col gap-2 1126:col-span-2 max-1126:items-end ">
-          <div className="text-xs text-center max-500:text-2xs text-transparent w-[100px] 500:w-[160px] 1126:w-1/2 mx-auto bg-gray-4 rounded">
-            ···
+          <div className="h-4 max-500:h-3.5 flex items-center w-full justify-center">
+            <div className="max-500:w-[100px] w-40 bg-gray-2 rounded-full max-500:h-1.5 h-2" />
           </div>
 
           <div

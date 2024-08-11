@@ -6,11 +6,15 @@ import queuesJson from "@assets/data/queues.json";
 
 const processGameData = async (puuid, game, jsons, rankedData, ddragonVersion) => {
   const { info, metadata } = game;
-  const { teams, gameDuration, participants } = info;
+  const { teams, gameMode, gameDuration, participants } = info;
+
+  if (gameMode !== "ARAM" && gameMode !== "CLASSIC") {
+    return { error: "Game mode not supported yet" };
+  }
 
   let summoner = participants.find((participant) => participant.puuid === puuid);
 
-  const summonerTeamObjectives = teams.find(({ teamId }) => teamId === summoner.teamId).objectives;
+  const summonerTeamObjectives = teams.find(({ teamId }) => teamId === summoner.teamId)?.objectives;
 
   const summonerTeam = {
     cs: 0,
@@ -27,7 +31,7 @@ const processGameData = async (puuid, game, jsons, rankedData, ddragonVersion) =
     objectives: summonerTeamObjectives,
   };
 
-  const opponentTeamObjectives = teams.find(({ teamId }) => teamId === summoner.teamId).objectives;
+  const opponentTeamObjectives = teams.find(({ teamId }) => teamId === summoner.teamId)?.objectives;
 
   const opponentTeam = {
     cs: 0,

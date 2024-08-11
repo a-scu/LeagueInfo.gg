@@ -13,8 +13,8 @@ export default function Participants({ win, summonerPuuid, summonerTeam, opponen
                 participant.puuid === summonerPuuid
                   ? `${
                       participant.win
-                        ? "max-410:border-0 border-db-500"
-                        : "max-410:border-0 border-dr-500"
+                        ? "max-410:border border-db-500"
+                        : "max-410:border border-dr-500"
                     }`
                   : ""
               }`}

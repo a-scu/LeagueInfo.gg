@@ -29,8 +29,8 @@ export default function RecentGames() {
 
   return (
     <div className="flex flex-col gap-2">
-      {recentGames.map((gameData) => (
-        <Game key={gameData.gameId} gameData={gameData} />
+      {recentGames.map((gameData, index) => (
+        <Game key={gameData.gameId || index} gameData={gameData} />
       ))}
     </div>
   );

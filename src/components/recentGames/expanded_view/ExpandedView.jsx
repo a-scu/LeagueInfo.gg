@@ -14,7 +14,7 @@ export default function ExpandedView({
         win={summonerTeam.win}
         summonerPuuid={summonerPuuid}
         participants={summonerTeam.participants}
-        teamKills={summonerTeam.objectives.champion.kills}
+        teamKills={summonerTeam?.objectives?.champion?.kills}
         teamSide={summonerTeam.teamId}
         objectives={summonerTeam.objectives}
         gameStats={gameStats}
@@ -26,7 +26,7 @@ export default function ExpandedView({
       <Table
         win={opponentTeam.win}
         participants={opponentTeam.participants}
-        teamKills={opponentTeam.objectives.champion.kills}
+        teamKills={opponentTeam?.objectives?.champion?.kills}
         teamSide={opponentTeam.teamId}
         objectives={opponentTeam.objectives}
         gameStats={gameStats}
