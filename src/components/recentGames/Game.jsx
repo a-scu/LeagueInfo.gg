@@ -16,8 +16,8 @@ export default function Game({ gameData }) {
 
   if (error) {
     return (
-      <div className="bg-gray-1 rounded p-2">
-        <span className="text-gray-6 text-xs">{error}</span>
+      <div className="bg-gray-1 max-500:p-1.5 max-800:rounded-none rounded p-2 items-center">
+        <span className="max-500:text-2xs text-gray-6 text-xs">{error}</span>
       </div>
     );
   }

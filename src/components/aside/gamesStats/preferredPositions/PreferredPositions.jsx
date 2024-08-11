@@ -99,16 +99,28 @@ const PreferredPositions = ({ positions, games, fetchingGamesStats }) => {
       </div>
 
       <div className="flex flex-col items-center justify-center w-full h-full gap-1 360:hidden">
-        <preferredPosition.Icon
-          loading={fetchingGamesStats}
-          className={`size-8 ${
-            fetchingGamesStats ? "opacity-50 text-gray-2 rounded-sm" : "text-gray-6"
-          }`}
-        />
+        {!fetchingGamesStats && !preferredPosition.games ? (
+          <div className="bg-gray-4 opacity-50 p-1.5">
+            <div className="bg-gray-1 size-3"></div>
+          </div>
+        ) : (
+          <preferredPosition.Icon
+            loading={fetchingGamesStats}
+            className={`size-8 ${
+              fetchingGamesStats ? "opacity-50 text-gray-2 rounded-sm" : "text-gray-6"
+            }`}
+          />
+        )}
 
-        <div className="h-4 justify-center max-500:h-3.5 flex items-center w-full">
-          <div className="w-6 bg-gray-2 rounded-full max-500:h-1.5 h-2" />
-        </div>
+        {fetchingGamesStats ? (
+          <div className="h-4 justify-center max-500:h-3.5 flex items-center w-full">
+            <div className="w-6 bg-gray-2 rounded-full max-500:h-1.5 h-2" />
+          </div>
+        ) : (
+          <span className="font-medium text-2xs text-gray-6">
+            {!preferredPosition.games ? "···" : preferredPosition.pct + "%"}
+          </span>
+        )}
       </div>
     </div>
   );

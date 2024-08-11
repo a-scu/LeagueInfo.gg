@@ -14,7 +14,7 @@ export default function Banner() {
           00
         </span>
 
-        <div className=" h-7 max-500:h-3.5 flex items-center justify-center">
+        <div className="h-7 max-500:h-6 flex items-center justify-center">
           <div className="w-10 bg-gray-2 rounded-full max-500:h-3 h-3.5" />
         </div>
       </div>

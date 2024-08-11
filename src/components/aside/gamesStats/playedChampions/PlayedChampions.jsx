@@ -37,6 +37,9 @@ const PlayedChampions = ({ champions, fetchingGamesStats }) => {
           .map((champion) => (
             <Champion key={champion.name} champion={champion} />
           ))}
+        {Object.keys(champions).length === 1 && (
+          <Champion fetchingGamesStats={true} skeleton={true} />
+        )}
       </div>
     </div>
   );
