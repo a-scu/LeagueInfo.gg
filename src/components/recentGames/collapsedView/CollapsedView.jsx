@@ -22,7 +22,7 @@ export default function CollapsedView({
   return (
     <div
       id={`collapsed-view-${gameId}`}
-      className={`w-full relative max-500:pt-[24px] pt-[26px] pl-1 800:pl-1.5 800:pr-10 800:pt-0 flex ${
+      className={`w-full relative pt-[26px] pl-1 800:pl-1.5 800:pr-10 800:pt-0 flex ${
         summoner.win ? "bg-blue-1 border-b-blue-2" : "bg-red-1 border-b-red-2"
       }`}
     >

@@ -37,7 +37,7 @@ export default function ExpandButton({ win, gameId }) {
   return (
     <button
       onClick={handleOnClick}
-      className={`border-l flex items-center 800:h-full absolute top-0 right-0 justify-center 800:w-10 w-14 max-410:w-[39px] h-[30px] max-500:h-[23px] max-800:h-[26px] ${getButtonColor()}`}
+      className={`border-l flex items-center 800:h-full absolute top-0 right-0 justify-center 800:w-10 w-14 max-410:w-[39px] h-[30px] max-800:h-[26px] ${getButtonColor()}`}
     >
       <ArrowDown
         className={`absolute 800:bottom-3 transition-transform size-4 ${expanded && "rotate-180"} ${
