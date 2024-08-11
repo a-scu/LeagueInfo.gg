@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 // import { $theme, setTheme } from "@/js/store";
 // import { useStore } from "@nanostores/react";

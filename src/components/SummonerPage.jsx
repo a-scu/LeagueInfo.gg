@@ -21,7 +21,6 @@ import Banner from "./banner/Banner";
 import Aside from "./aside/Aside";
 import RecentGames from "./recentGames/RecentGames";
 import getGamesStats from "@/js/getGamesStats";
-import { BrowserRouter } from "react-router-dom";
 
 export default function SummonerPage({ region, search }) {
   const summoner = useStore($summoner);
@@ -133,14 +132,12 @@ export default function SummonerPage({ region, search }) {
   // #region RETURN
 
   return (
-    <BrowserRouter>
-      <div className="flex flex-col gap-2">
-        <Banner />
-        <div className="flex max-1126:mx-auto max-1126:max-w-[768px] flex-col max-1126:w-full 1126:mx-auto 1126:grid grid-cols-[320px,768px] gap-2">
-          <Aside />
-          <RecentGames />
-        </div>
+    <div className="flex flex-col gap-2">
+      <Banner />
+      <div className="flex max-1126:mx-auto max-1126:max-w-[768px] flex-col max-1126:w-full 1126:mx-auto 1126:grid grid-cols-[320px,768px] gap-2">
+        <Aside />
+        <RecentGames />
       </div>
-    </BrowserRouter>
+    </div>
   );
 }
