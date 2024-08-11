@@ -79,3 +79,9 @@ export const setFetchingGamesStats = (value) => {
 export const setGamesStats = (value) => {
   $gamesStats.set(value);
 };
+
+export const $queueType = atom("all");
+
+export const setQueueType = (value) => {
+  $queueType.set(value);
+};
