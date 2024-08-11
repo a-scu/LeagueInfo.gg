@@ -10,7 +10,7 @@ export default function RecentGames() {
 
   if (fetchingRecentGames) {
     return (
-      <div className="flex flex-col gap-2 animate-pulse">
+      <div className="flex flex-col gap-2 ">
         <GameSkeleton />
         <GameSkeleton />
         <GameSkeleton />

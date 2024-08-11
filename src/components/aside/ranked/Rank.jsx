@@ -1,7 +1,7 @@
 export default function Rank({ queue, fetchingRankedData, rankData }) {
   if (fetchingRankedData)
     return (
-      <div className="animate-pulse flex flex-col flex-1 gap-1 p-2 bg-gray-1">
+      <div className=" flex flex-col flex-1 gap-1 p-2 bg-gray-1">
         <div className="h-4 flex items-center justify-center max-500:h-3.5">
           <div className="w-10 bg-gray-2 rounded-full max-500:h-1.5 h-2" />
         </div>

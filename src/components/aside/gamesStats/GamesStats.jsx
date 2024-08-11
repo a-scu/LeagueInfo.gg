@@ -10,7 +10,7 @@ const GamesStats = () => {
 
   if (fetchingGamesStats)
     return (
-      <div className="animate-pulse max-360:grid-cols-[100px,40px,100px] gap-x-2 max-500:grid-cols-[100px,102px,100px] grid-cols-[160px,102px,160px] max-1126:justify-evenly max-500:justify-between max-800:rounded-none grid max-1126:gap-2 max-1126:p-2 overflow-hidden rounded 1126:grid-cols-[1fr,110px] 1126:grid-rows-[fit,fit] bg-gray-1">
+      <div className=" max-360:grid-cols-[100px,40px,100px] gap-x-2 max-500:grid-cols-[100px,102px,100px] grid-cols-[160px,102px,160px] max-1126:justify-evenly max-500:justify-between max-800:rounded-none grid max-1126:gap-2 max-1126:p-2 overflow-hidden rounded 1126:grid-cols-[1fr,110px] 1126:grid-rows-[fit,fit] bg-gray-1">
         <div className="flex flex-col flex-1 gap-2 1126:pl-2 1126:py-2">
           <div className="h-4 max-500:h-3.5 flex items-center w-full">
             <div className="w-full bg-gray-2 rounded-full max-500:h-1.5 h-2" />

@@ -13,7 +13,7 @@ export default function Ranked() {
   return (
     <div
       className={`flex flex-col gap-1 overflow-hidden justify-center rounded max-800:rounded-none ${
-        fetchingRankedData && "animate-pulse"
+        fetchingRankedData && ""
       } `}
     >
       <div className="flex gap-px overflow-hidden justify-center rounded max-800:rounded-none">
