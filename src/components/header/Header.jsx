@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // import { $theme, setTheme } from "@/js/store";
 // import { useStore } from "@nanostores/react";
@@ -11,6 +12,8 @@ import RegionButton from "./RegionButton";
 import SearchButton from "./SearchButton";
 
 export default function Header() {
+  // const navigate = useNavigate();
+
   // const theme = useStore($theme);
 
   // useEffect(() => {
@@ -24,9 +27,7 @@ export default function Header() {
     e.preventDefault();
     if (search.includes("#")) {
       const formattedSearch = search.replace("#", "-").replace(/\s/g, "").toLowerCase();
-      // push(`/summoner/las/${formattedSearch}`);
-    } else {
-      // push(`/summoner/las/${search.replace(/\s/g, "").toLowerCase()}`);
+      // navigate(`/summoners/las/${formattedSearch}`);
     }
   };
 
@@ -48,7 +49,7 @@ export default function Header() {
 
           <form
             onSubmit={handleSearch}
-            className="flex w-full h-8 overflow-hidden bg-gray-1 rounded"
+            className="flex w-full h-8 overflow-hidden rounded bg-gray-1"
           >
             <RegionButton>LAS</RegionButton>
 
@@ -58,7 +59,7 @@ export default function Header() {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full px-3 text-sm text-white bg-transparent h-full outline-none"
+                className="w-full h-full px-3 text-sm text-white bg-transparent outline-none"
               />
 
               {!search && <InputLabel />}
