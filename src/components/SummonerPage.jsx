@@ -53,7 +53,7 @@ export default function SummonerPage({ region, search }) {
     const getSummonerData = async (ddragonVersion) => {
       try {
         const res = await fetch(
-          `/api/getSummoner/?search=${search}&ddragonVersion=${ddragonVersion}`
+          `/api/getSummoner/?region=${region}&search=${search}&ddragonVersion=${ddragonVersion}`
         );
         if (!res.ok) throw Error(res.statusText);
         const summoner = await res.json();

@@ -20,9 +20,9 @@ export default function KDA({ win, kills, deaths, assists, teamKills }) {
       {/* Kills / Deaths / Assists */}
       <span className="font-medium leading-none text-white max-sm:text-sm max-sm:leading-none">
         {kills}
-        {" / "}
-        <span className="text-gray-6">{deaths}</span>
-        {" / "}
+        <span className="text-gray-6">{" / "}</span>
+        <span className={win ? "text-red" : "text-red"}>{deaths}</span>
+        <span className="text-gray-6">{" / "}</span>
         {assists}
       </span>
 

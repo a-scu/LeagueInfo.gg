@@ -1,8 +1,9 @@
+import { useStore } from "@nanostores/react";
+import { $fetchingGamesStats, $gamesStats } from "@/js/store";
+
 import Pie from "./Pie";
 import PreferredPositions from "./preferredPositions/PreferredPositions";
 import PlayedChampions from "./playedChampions/PlayedChampions";
-import { useStore } from "@nanostores/react";
-import { $fetchingGamesStats, $gamesStats } from "@/js/store";
 
 const GamesStats = () => {
   const fetchingGamesStats = useStore($fetchingGamesStats);
@@ -61,7 +62,12 @@ const GamesStats = () => {
       </div>
     );
 
-  if (!fetchingGamesStats && !gamesStats) return <span>Error fetching recent games</span>;
+  if (!fetchingGamesStats && !gamesStats)
+    return (
+      <div className="bg-gray-1 p-4 rounded text-gray-4 text-sm">
+        <span>Error fetching recent games</span>
+      </div>
+    );
 
   if (!gamesStats) return null;
   const { summoner } = gamesStats;
@@ -110,13 +116,15 @@ const GamesStats = () => {
             </div>
 
             <div className="text-xs font-medium max-500:text-2xs text-gray-6">
-              <span>{killsPerGame}</span>
+              <span>{isNaN(killsPerGame) ? 0 : killsPerGame}</span>
               {" / "}
-              <span className="text-gray-6">{deathsPerGame}</span>
+              <span className="text-gray-6">{isNaN(deathsPerGame) ? 0 : deathsPerGame}</span>
               {" / "}
-              <span>{assistsPerGame}</span>
+              <span>{isNaN(assistsPerGame) ? 0 : assistsPerGame}</span>
             </div>
-            <p className={`text-sm font-medium text-gray-6 ${kdaColor}`}>{kdaPerGame}:1 KDA</p>
+            <p className={`text-sm font-medium text-gray-6 ${kdaColor}`}>
+              {kdaPerGame === "Perfect" ? kdaPerGame : `${kdaPerGame}:1`} KDA
+            </p>
             <p className="text-xs max-500:text-2xs text-gray-6">P/Kill {pKillPerGame}%</p>
           </div>
         </div>

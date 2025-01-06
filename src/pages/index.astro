@@ -1,8 +1,6 @@
 ---
 import Home from "@/components/Home";
-// import Layout from "@/layouts/Layout";
 import Footer from "@/components/footer/Footer";
-// import SummonerPage from "@/components/SummonerPage";
 ---
 
 <html lang="en">
@@ -19,6 +17,10 @@ import Footer from "@/components/footer/Footer";
       @tailwind utilities;
       * {
         outline: none;
+      }
+      *::selection {
+        color: #f00;
+        background-color: #5383e8;
       }
       html {
         background-color: #1c1c1f;

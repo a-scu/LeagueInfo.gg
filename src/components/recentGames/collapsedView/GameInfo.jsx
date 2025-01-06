@@ -6,7 +6,7 @@ export default function GameInfo({ win, queue, gameDuration, gameAge }) {
       }`}
     >
       <div className="flex flex-row gap-x-2 800:flex-col">
-        <p className={`font-medium ${win ? "text-blue" : "text-red"}`}>{queue}</p>
+        <p className={`font-bold ${win ? "text-blue" : "text-red"}`}>{queue}</p>
         <p>{gameAge}</p>
       </div>
 

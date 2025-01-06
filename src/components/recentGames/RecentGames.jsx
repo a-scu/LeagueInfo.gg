@@ -51,8 +51,8 @@ export default function RecentGames() {
 
   if (!fetchingRecentGames && (!recentGames || !recentGames.length))
     return (
-      <div className="p-2 py-1.5 font-medium text-white bg-gray-1 text-sm rounded">
-        No recent games
+      <div className="p-2 py-1.5 flex font-medium justify-center items-center text-gray-4 bg-gray-1 text-sm rounded">
+        <span>No recent games</span>
       </div>
     );
 

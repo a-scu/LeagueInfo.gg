@@ -10,19 +10,17 @@ export default function Participants({ win, summonerPuuid, summonerTeam, opponen
           <div key={participant.puuid} className="flex items-center gap-1 max-450:gap-0.5">
             <div
               className={`overflow-hidden rounded size-3-5 min-size-3-5 sm:size-4 sm:min-size-4 aspect-square ${
-                participant.puuid === summonerPuuid
-                  ? `${
-                      participant.win
-                        ? "max-410:border-0 border-db-500"
-                        : "max-410:border-0 border-dr-500"
-                    }`
-                  : ""
+                participant.puuid === summonerPuuid ? "border border-white rounded-full" : ""
               }`}
             >
               <img
                 src={participant.champIcon}
                 alt=""
-                className="object-cover bg-black pointer-events-none scale-115 size-3-5 min-size-3-5 sm:size-4 sm:min-size-4 aspect-square"
+                className={`object-cover bg-black pointer-events-none scale-115 aspect-square ${
+                  participant.puuid === summonerPuuid
+                    ? "size-[13px] min-size-[13px] sm:size-[15px] sm:min-size-[15px]"
+                    : "size-3-5 min-size-3-5 sm:size-4 sm:min-size-4"
+                }`}
               />
             </div>
 

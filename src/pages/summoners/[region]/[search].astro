@@ -33,7 +33,7 @@ const { region, search } = Astro.params;
     </style>
   </head>
   <body>
-    <SummonerLayout client:load>
+    <SummonerLayout client:load region={region}>
       <SummonerPage client:load region={region} search={search} />
     </SummonerLayout>
   </body>

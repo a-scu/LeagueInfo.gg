@@ -7,6 +7,7 @@ const API_KEY = import.meta.env.RIOT_API_KEY;
 export const GET: APIRoute = async ({ request }) => {
   try {
     const url = new URL(request.url);
+    const region = url.searchParams.get("region");
     const search = url.searchParams.get("search");
     const ddragonVersion = url.searchParams.get("ddragonVersion");
 
@@ -17,8 +18,8 @@ export const GET: APIRoute = async ({ request }) => {
 
     if (!name || !tag) throw Error("Summoner name or tag not provided");
 
-    const accountData = await getAccountByNameAndTag(name, tag);
-    const summonerData = await getSummonerByPuuid(accountData.puuid);
+    const accountData = await getAccountByNameAndTag(region, name, tag);
+    const summonerData = await getSummonerByPuuid(region, accountData.puuid);
 
     const summoner = { ...accountData, ...summonerData };
 
@@ -39,9 +40,13 @@ export const GET: APIRoute = async ({ request }) => {
 
 // #region GET ACCOUNT BY NAME AND TAG
 
-const getAccountByNameAndTag = async (name, tag) => {
+const getAccountByNameAndTag = async (region, name, tag) => {
+  let searchRegion = "";
+
+  if (region === "las") searchRegion = "americas";
+
   const res = await fetch(
-    `https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${name}/${tag}?api_key=${API_KEY}`
+    `https://${searchRegion}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${name}/${tag}?api_key=${API_KEY}`
   );
 
   if (!res.ok) throw Error("Error fetching account by name and tag");
@@ -51,9 +56,13 @@ const getAccountByNameAndTag = async (name, tag) => {
 
 // #region GET SUMMONER BY PUUID
 
-const getSummonerByPuuid = async (puuid) => {
+const getSummonerByPuuid = async (region, puuid) => {
+  let searchRegion = "";
+
+  if (region === "las") searchRegion = "la2";
+
   const res = await fetch(
-    `https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=${API_KEY}`
+    `https://${searchRegion}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=${API_KEY}`
   );
 
   if (!res.ok) throw Error("Error fetching summoner by puuid");

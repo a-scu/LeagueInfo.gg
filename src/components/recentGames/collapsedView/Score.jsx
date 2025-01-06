@@ -24,14 +24,14 @@ export default function Score({ largestMultiKill, score, win }) {
         <>
           <span
             className={`max-500:hidden px-2 py-0.5 rounded-full w-fit ${
-              win ? "bg-db-500" : "bg-dr-500"
+              win ? "bg-red" : "bg-dr-500"
             }`}
           >
             {formattedLargestMultiKill}
           </span>
           <span
             className={`500:hidden flex items-center justify-center size-4-5 aspect-square rounded-full w-fit ${
-              win ? "bg-db-500" : "bg-dr-500"
+              win ? "bg-red" : "bg-dr-500"
             }`}
           >
             {largestMultiKill}
