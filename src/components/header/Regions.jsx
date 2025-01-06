@@ -10,6 +10,7 @@ export default function Regions() {
   return (
     <div>
       <button
+        type="button"
         onClick={() => setExpanded(!expanded)}
         className={`flex items-center pl-1 h-8 gap-1 justify-center text-center w-16 text-xs text-blue font-semibold bg-gray-1 border-r border-r-gray-2 ${
           expanded ? "rounded-tl" : "rounded-l"
