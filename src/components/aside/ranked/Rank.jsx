@@ -8,7 +8,7 @@ export default function Rank({ queue, fetchingRankedData, rankData }) {
           </div>
 
           <div className="flex flex-col items-center w-full gap-1">
-            <div className="bg-gray-2 border-4 rounded-full size-16 max-500:size-14 aspect-square border-gray-2" />
+            <div className="bg-gray-2 border-4 rounded-full size-16 max-500:size-[60px] aspect-square border-gray-2" />
 
             <div className="flex flex-col w-full">
               <div className="max-500:h-4 h-5 flex items-center justify-center">
@@ -36,7 +36,7 @@ export default function Rank({ queue, fetchingRankedData, rankData }) {
         <span className="text-xs max-500:text-2xs text-gray-5 opacity-50">{queue}</span>
 
         <div className="flex flex-col items-center w-full gap-1 opacity-50">
-          <div className="border-4 rounded-full size-16 max-500:size-14 aspect-square bg-gray-3 border-gray-2" />
+          <div className="border-4 rounded-full size-16 max-500:size-[60px] aspect-square bg-gray-3 border-gray-2" />
 
           <div className="flex flex-col items-center">
             <span className="text-sm max-500:text-xs text-gray-5">Unranked</span>
@@ -81,7 +81,7 @@ export default function Rank({ queue, fetchingRankedData, rankData }) {
         <img
           src={emblem}
           alt=""
-          className={`object-contain p-1 border-4 rounded-full size-16 max-500:size-14 aspect-square bg-gray-3 ${borderColor}`}
+          className={`object-contain p-1 border-2 rounded-full size-16 max-500:size-[60px] aspect-square bg-gray-3 ${borderColor}`}
         />
 
         <div className="flex flex-col items-center">
