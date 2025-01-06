@@ -7,7 +7,9 @@ export default function KDA({ teamKills, kills, deaths, assists, largestMultiKil
   const kda = deaths === 0 ? 0 : ((kills + assists) / deaths).toFixed(2);
 
   const kdaColor =
-    kda < 3
+    kda === 0
+      ? "text-orange"
+      : kda < 3
       ? "text-gray-6"
       : kda < 4 && kda >= 3
       ? "text-teal"
@@ -61,7 +63,7 @@ export default function KDA({ teamKills, kills, deaths, assists, largestMultiKil
         <>
           <span
             className={`max-500:hidden max-sm:text-3xs text-2xs rounded-full w-fit ${
-              win ? "text-gray-6" : "text-gray-6"
+              win ? "text-red" : "text-red"
             }`}
           >
             {formattedLargestMultiKill}
@@ -69,7 +71,7 @@ export default function KDA({ teamKills, kills, deaths, assists, largestMultiKil
 
           <span
             className={`500:hidden max-sm:text-3xs text-2xs rounded-full w-fit ${
-              win ? "text-gray-6" : "text-gray-6"
+              win ? "text-red" : "text-red"
             }`}
           >
             {responsiveFormattedLargestMultiKill}

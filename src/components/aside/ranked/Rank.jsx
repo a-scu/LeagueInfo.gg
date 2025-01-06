@@ -52,6 +52,27 @@ export default function Rank({ queue, fetchingRankedData, rankData }) {
 
   const { rank, tier, emblem, wins, losses, points, winrate } = rankData;
 
+  const borderColor =
+    tier === "CHALLENGER"
+      ? "border-challenger"
+      : tier === "GRANDMASTER"
+      ? "border-grandmaster"
+      : tier === "MASTER"
+      ? "border-master"
+      : tier === "DIAMOND"
+      ? "border-diamond"
+      : tier === "EMERALD"
+      ? "border-emerald"
+      : tier === "PLATINUM"
+      ? "border-platinum"
+      : tier === "GOLD"
+      ? "border-gold"
+      : tier === "SILVER"
+      ? "border-silver"
+      : tier === "BRONZE"
+      ? "border-bronze"
+      : "border-[#47433f]";
+
   return (
     <div className="flex flex-col items-center flex-1 gap-1 p-2 bg-gray-1">
       <span className="text-xs max-500:text-2xs text-white">{queue}</span>
@@ -60,7 +81,7 @@ export default function Rank({ queue, fetchingRankedData, rankData }) {
         <img
           src={emblem}
           alt=""
-          className="object-contain p-1 border-4 rounded-full size-16 max-500:size-14 aspect-square bg-gray-3 border-gray-2"
+          className={`object-contain p-1 border-4 rounded-full size-16 max-500:size-14 aspect-square bg-gray-3 ${borderColor}`}
         />
 
         <div className="flex flex-col items-center">

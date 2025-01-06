@@ -1,9 +1,11 @@
 import { useStore } from "@nanostores/react";
-import { $fetchingSummoner, $summoner } from "@/js/store";
+import { $fetchingRankedData, $fetchingSummoner, $rankedData, $summoner } from "@/js/store";
 
 export default function Banner() {
   const fetchingSummoner = useStore($fetchingSummoner);
   const summoner = useStore($summoner) || {};
+  const fetchingRankedData = useStore($fetchingRankedData);
+  const rankedData = useStore($rankedData) || {};
 
   if (fetchingSummoner)
     return (
@@ -24,16 +26,44 @@ export default function Banner() {
 
   if (!fetchingSummoner && !summoner) return <span>error fetching summoner</span>;
 
+  const { highestRank } = rankedData || {};
+
+  const tier = highestRank ? rankedData[highestRank]?.tier : null;
+
+  const borderColor = !tier
+    ? ""
+    : tier === "CHALLENGER"
+    ? "border-challenger"
+    : tier === "GRANDMASTER"
+    ? "border-grandmaster"
+    : tier === "MASTER"
+    ? "border-master"
+    : tier === "DIAMOND"
+    ? "border-diamond"
+    : tier === "EMERALD"
+    ? "border-emerald"
+    : tier === "PLATINUM"
+    ? "border-platinum"
+    : tier === "GOLD"
+    ? "border-gold"
+    : tier === "SILVER"
+    ? "border-silver"
+    : tier === "BRONZE"
+    ? "border-bronze"
+    : "border-[#47433f]";
+
   return (
     <div className="flex flex-col items-center w-full p-2 pt-4 text-center bg-gray-1">
       <img
         alt=""
         loading="lazy"
         src={summoner.profileIcon}
-        className="size-[72px] 500:size-20 rounded-full bg-gray-3 border-4 border-gray-2"
+        className={`size-[72px] 500:size-20 rounded-full bg-gray-3 border-4 ${
+          borderColor || "border-gray-2"
+        }`}
       />
 
-      <span className="max-500:text-2xs text-center text-xs px-2 mt-1.5 py-0.5 text-white bg-gray-3 rounded-full">
+      <span className="max-500:text-2xs text-center text-xs px-2 mt-1.5 py-0.5 text-white bg-gray-3 border border-gray-2 rounded-full">
         {summoner.summonerLevel}
       </span>
 
