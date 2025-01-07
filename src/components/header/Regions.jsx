@@ -17,7 +17,7 @@ export default function Regions() {
       <button
         type="button"
         onClick={() => setExpanded(!expanded)}
-        className={`flex items-center pl-1 h-full gap-1 justify-center text-center w-16 text-xs text-blue font-semibold bg-gray-1 border-r border-r-gray-2 ${
+        className={`flex items-center pl-1 h-full max-400:text-2xs gap-1 justify-center text-center max-400:w-14 w-16 text-xs text-blue font-semibold bg-gray-1 border-r border-r-gray-2 ${
           expanded ? "rounded-tl" : "rounded-l"
         }`}
       >
@@ -26,14 +26,14 @@ export default function Regions() {
       </button>
 
       {expanded && (
-        <div className="absolute w-16 overflow-auto z-50 flex flex-col bg-gray-1 border shadow-md rounded-b border-gray-2">
+        <div className="absolute w-16 overflow-auto z-50 flex flex-col bg-gray-1 border shadow-md rounded-b border-gray-2 max-400:w-14">
           {REGIONS.map(
             (region) =>
               region !== selectedRegion && (
                 <button
                   key={region}
                   onClick={() => handleOnClick(region)}
-                  className="text-gray-6 text-xs hover:bg-gray-2 py-1.5"
+                  className="text-gray-6 text-xs max-400:text-2xs hover:bg-gray-2 py-1.5"
                 >
                   {region}
                 </button>

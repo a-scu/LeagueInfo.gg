@@ -28,6 +28,8 @@ export default {
       },
 
       colors: {
+        riot: "#ec0029",
+
         "gray-1": "#31313c",
         "gray-2": "#282830",
         "gray-3": "#1c1c1f",

@@ -7,6 +7,7 @@ import SearchButton from "./SearchButton";
 import Regions from "./Regions";
 
 import baron from "../../assets/images/baron.webp";
+import Star from "../icons/Star";
 
 export default function Header({ region }) {
   const [search, setSearch] = useState("");
@@ -51,7 +52,7 @@ export default function Header({ region }) {
     const handleScroll = () => {
       if (headerRef.current) {
         const headerHeight = headerRef.current.offsetHeight;
-        setScrolled(window.scrollY > headerHeight - 52); // Ajusta el umbral según sea necesario
+        setScrolled(window.scrollY > headerHeight - 48); // Ajusta el umbral según sea necesario
       }
     };
 
@@ -69,9 +70,9 @@ export default function Header({ region }) {
         scrolled ? "sticky top-0" : "h-auto"
       }`}
     >
-      <div className="w-full p-2">
+      <div className={`w-full ${scrolled ? "p-1" : "p-2 max-400:p-1"}`}>
         <div
-          className={`flex items-center w-full max-w-screen-md gap-2 mx-auto transition-all duration-300 ease-out ${
+          className={`flex items-center relative w-full max-w-screen-md max-400:gap-1 gap-2 mx-auto transition-all duration-300 ease-out ${
             scrolled ? "flex-row" : "flex-col"
           }`}
         >
@@ -85,13 +86,10 @@ export default function Header({ region }) {
           />
 
           {/* Formulario */}
-          <form
-            onSubmit={handleSearch}
-            className="flex w-full h-9 rounded bg-gray-1 overflow-hidden"
-          >
+          <form onSubmit={handleSearch} className="flex w-full h-9 rounded bg-gray-1">
             <Regions />
 
-            <div className="relative justify-center flex items-center flex-1">
+            <div className="relative justify-center flex items-center flex-1 overflow-hidden">
               <input
                 id="search"
                 type="text"

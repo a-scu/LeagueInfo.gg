@@ -89,7 +89,7 @@ export default function Banner() {
           <button
             type="button"
             onClick={() => {}}
-            className="rounded flex gap-1.5 items-center max-500:mt-1 justify-center max-500:p-1 max-500:text-2xs mt-1.5 border bg-gray-2 border-gray-3 text-white text-xs p-1.5"
+            className="rounded flex gap-1.5 items-center max-500:mt-1 hover:text-riot justify-center max-500:p-1 max-500:text-2xs mt-1.5 border bg-gray-2 border-gray-3 text-white text-xs p-1.5"
           >
             <span>Link with Riot</span>
 
