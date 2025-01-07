@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import InputLabel from "./InputLabel";
 import SearchButton from "./SearchButton";
@@ -8,10 +8,10 @@ import Regions from "./Regions";
 
 import baron from "../../assets/images/baron.webp";
 
-// Arreglar todo lo de la region
-
 export default function Header({ region }) {
   const [search, setSearch] = useState("");
+  const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef(null);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -47,20 +47,51 @@ export default function Header({ region }) {
     setSearch(newValue);
   };
 
-  // 1234567890abcde
+  useEffect(() => {
+    const handleScroll = () => {
+      if (headerRef.current) {
+        const headerHeight = headerRef.current.offsetHeight;
+        setScrolled(window.scrollY > headerHeight - 52); // Ajusta el umbral según sea necesario
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <header className="flex flex-col bg-blue">
+    <header
+      ref={headerRef}
+      className={`flex flex-col bg-blue shadow-md z-50 transition-all duration-300 ease-out ${
+        scrolled ? "sticky top-0" : "h-auto"
+      }`}
+    >
       <div className="w-full p-2">
-        <div className="flex flex-col items-center w-full max-w-screen-md gap-2 mx-auto">
-          <div className="flex flex-col gap-0.5">
-            <img src={baron.src} alt="" className="object-contain h-24 max-sm:h-20" />
-          </div>
+        <div
+          className={`flex items-center w-full max-w-screen-md gap-2 mx-auto transition-all duration-300 ease-out ${
+            scrolled ? "flex-row" : "flex-col"
+          }`}
+        >
+          {/* Imagen */}
+          <img
+            src={baron.src}
+            alt=""
+            className={`object-contain transition-all duration-300 ease-out ${
+              scrolled ? "h-10" : "h-24 max-sm:h-20"
+            }`}
+          />
 
-          <form onSubmit={handleSearch} className="flex w-full h-8 rounded bg-gray-1">
+          {/* Formulario */}
+          <form
+            onSubmit={handleSearch}
+            className="flex w-full h-9 rounded bg-gray-1 overflow-hidden"
+          >
             <Regions />
 
-            <div className="relative justify-center flex items-center w-full">
+            <div className="relative justify-center flex items-center flex-1">
               <input
                 id="search"
                 type="text"
@@ -69,7 +100,7 @@ export default function Header({ region }) {
                 className="w-full h-full px-3 text-sm text-transparent bg-transparent outline-none caret-blue"
               />
 
-              <span className="absolute left-3 pointer-events-none">
+              <span className="absolute left-3 pointer-events-none truncate">
                 <span className="text-sm text-white">{search.split("#")[0]}</span>
                 {search && !search.includes("#") && (
                   <span className="ml-1 text-sm text-gray-5">+ #TAG</span>

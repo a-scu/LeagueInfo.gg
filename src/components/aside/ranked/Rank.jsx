@@ -81,7 +81,7 @@ export default function Rank({ queue, fetchingRankedData, rankData }) {
         <img
           src={emblem}
           alt=""
-          className={`object-contain p-1 border-2 rounded-full size-16 max-500:size-[60px] aspect-square bg-gray-3 ${borderColor}`}
+          className={`object-contain p-1 rounded-full size-16 max-500:size-[60px] aspect-square bg-gray-3 border-gray-4`}
         />
 
         <div className="flex flex-col items-center">
