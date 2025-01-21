@@ -2,9 +2,9 @@ import getParticipant from "./getParticipant";
 
 import queuesJson from "@assets/data/queues.json";
 
-// #region PROCESS GAME DATA
+// region PROCESS GAME DATA
 
-const processGameData = async (puuid, game, jsons, rankedData, ddragonVersion) => {
+const processGameData = async (puuid, game, jsons, rankedData, region) => {
   const { info, metadata } = game;
   const { teams, gameMode, gameDuration, participants } = info;
 
@@ -70,7 +70,8 @@ const processGameData = async (puuid, game, jsons, rankedData, ddragonVersion) =
       gameDuration,
       puuid,
       rankedData,
-      jsons
+      jsons,
+      region
     );
 
     participantTeam.cs += participant.cs;
@@ -121,7 +122,7 @@ const processGameData = async (puuid, game, jsons, rankedData, ddragonVersion) =
   };
 };
 
-// #region SORT PARTICIPANTS
+// region SORT PARTICIPANTS
 
 const sortParticipants = (array) => {
   const POSITIONS = {
@@ -135,14 +136,14 @@ const sortParticipants = (array) => {
   return array.sort((a, b) => POSITIONS[a.position] - POSITIONS[b.position]);
 };
 
-// #region GET QUEUE
+// region GET QUEUE
 
 const getQueue = (gameQueueId) => {
   const { description } = Object.values(queuesJson).find(({ queueId }) => queueId === gameQueueId);
   return description;
 };
 
-// #region GET GAME DURATION
+// region GET GAME DURATION
 
 const getFormattedGameDuration = (gameDurationInSeconds) => {
   const hours = Math.floor(gameDurationInSeconds / 3600);
@@ -166,7 +167,7 @@ const getFormattedGameDuration = (gameDurationInSeconds) => {
   return string.join(" ");
 };
 
-// #region GET GAME AGE
+// region GET GAME AGE
 
 const getGameAge = (gameEndTimestamp) => {
   const difference = new Date().getTime() - gameEndTimestamp;

@@ -1,14 +1,6 @@
 import { atom } from "nanostores";
 
-// #region THEME
-
-export const $theme = atom("dark");
-
-export const setTheme = (value) => {
-  $theme.set(value);
-};
-
-// #region SUMMONER
+// region SUMMONER
 
 export const $fetchingSummoner = atom(true);
 export const $summoner = atom(null);
@@ -21,7 +13,7 @@ export const setSummoner = (value) => {
   $summoner.set(value);
 };
 
-// #region JSONS
+// region JSONS
 
 export const $fetchingJsons = atom(true);
 export const $ddragonVersion = atom(null);
@@ -44,7 +36,7 @@ export const setJsons = (jsons) => {
   $items.set(items);
 };
 
-// #region RANKED DATA
+// region RANKED DATA
 
 export const $fetchingRankedData = atom(true);
 export const $rankedData = atom(null);
@@ -57,7 +49,7 @@ export const setRankedData = (value) => {
   $rankedData.set(value);
 };
 
-// #region RECENT GAMES
+// region RECENT GAMES
 
 export const $fetchingRecentGames = atom(true);
 export const $recentGames = atom(null);

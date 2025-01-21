@@ -9,9 +9,12 @@ import Regions from "./Regions";
 import baron from "../../assets/images/baron.webp";
 import Star from "../icons/Star";
 
-export default function Header({ region }) {
+export default function Header({ initialRegion }) {
+  const [region, setRegion] = useState(initialRegion);
+
   const [search, setSearch] = useState("");
   const [scrolled, setScrolled] = useState(false);
+
   const headerRef = useRef(null);
 
   const handleSearch = (e) => {
@@ -56,6 +59,28 @@ export default function Header({ region }) {
       }
     };
 
+    const getRegion = async () => {
+      try {
+        if (initialRegion) {
+          localStorage.setItem("region", region);
+        }
+
+        const storedRegion = localStorage.getItem("region");
+        console.log("Stored region:", storedRegion);
+
+        if (storedRegion) {
+          setRegion(storedRegion);
+        } else {
+          setRegion("LAS");
+          localStorage.setItem("region", "LAS");
+        }
+      } catch (error) {
+        console.log("Error fetching region:", error);
+      }
+    };
+
+    getRegion();
+
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -70,7 +95,7 @@ export default function Header({ region }) {
         scrolled ? "sticky top-0" : "h-auto"
       }`}
     >
-      <div className={`w-full ${scrolled ? "p-1" : "p-2 max-400:p-1"}`}>
+      <div className={`w-full ${scrolled ? "py-1 px-2 max-400:px-1" : "p-2 max-400:p-1"}`}>
         <div
           className={`flex items-center relative w-full max-w-screen-md max-400:gap-1 gap-2 mx-auto transition-all duration-300 ease-out ${
             scrolled ? "flex-row" : "flex-col"
@@ -87,7 +112,7 @@ export default function Header({ region }) {
 
           {/* Formulario */}
           <form onSubmit={handleSearch} className="flex w-full h-9 rounded bg-gray-1">
-            <Regions />
+            <Regions region={region} setRegion={setRegion} />
 
             <div className="relative justify-center flex items-center flex-1 overflow-hidden">
               <input

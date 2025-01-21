@@ -22,13 +22,13 @@ import Aside from "./aside/Aside";
 import RecentGames from "./recentGames/RecentGames";
 import getGamesStats from "@/js/getGamesStats";
 
-export default function SummonerPage({ region, search }) {
+export default function SummonerPage({ search, initialRegion }) {
   const summoner = useStore($summoner);
 
   useEffect(() => {
     if (summoner) return;
 
-    // #region GET JSONS
+    // region GET JSONS
 
     const handleGetJsons = async () => {
       try {
@@ -48,12 +48,12 @@ export default function SummonerPage({ region, search }) {
       }
     };
 
-    // #region GET SUMMONER DATA
+    // region GET SUMMONER DATA
 
     const getSummonerData = async (ddragonVersion) => {
       try {
         const res = await fetch(
-          `/api/getSummoner/?region=${region}&search=${search}&ddragonVersion=${ddragonVersion}`
+          `/api/getSummoner/?region=${initialRegion}&search=${search}&ddragonVersion=${ddragonVersion}`
         );
         if (!res.ok) throw Error(res.statusText);
         const summoner = await res.json();
@@ -69,11 +69,13 @@ export default function SummonerPage({ region, search }) {
       }
     };
 
-    // #region GET RANKED DATA
+    // region GET RANKED DATA
 
     const getRankedData = async (summonerId) => {
       try {
-        const res = await fetch(`/api/getRankedData/${summonerId}`);
+        const res = await fetch(
+          `/api/getRankedData?region=${initialRegion}&summonerId=${summonerId}`
+        );
         if (!res.ok) throw Error(res.statusText);
         const rankedData = await res.json();
 
@@ -88,7 +90,7 @@ export default function SummonerPage({ region, search }) {
       }
     };
 
-    // #region GET RECENT GAMES
+    // region GET RECENT GAMES
 
     const getRecentGames = async (puuid, jsons, rankedData) => {
       try {
@@ -101,7 +103,9 @@ export default function SummonerPage({ region, search }) {
         console.log("Recent Games:", recentGames);
 
         const processedRecentGames = await Promise.all(
-          recentGames.map(async (game) => await processGameData(puuid, game, jsons, rankedData))
+          recentGames.map(
+            async (game) => await processGameData(puuid, game, jsons, rankedData, initialRegion)
+          )
         );
 
         console.log("Processed Recent Games:", processedRecentGames);
@@ -117,7 +121,7 @@ export default function SummonerPage({ region, search }) {
       }
     };
 
-    // #region GET ALL DATA
+    // region GET ALL DATA
 
     const getAllData = async () => {
       const jsons = await handleGetJsons();
@@ -129,7 +133,7 @@ export default function SummonerPage({ region, search }) {
     getAllData();
   }, [summoner]);
 
-  // #region RETURN
+  // region RETURN
 
   return (
     <div className="flex flex-col gap-2">

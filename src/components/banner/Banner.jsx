@@ -59,7 +59,17 @@ export default function Banner() {
     : "border-[#47433f]";
 
   return (
-    <div className="flex justify-center items-center w-full p-2 pt-4 bg-gray-1 mt-">
+    <div className="flex justify-center relative items-center w-full p-2 pt-4 bg-gray-1 mt-">
+      <button
+        type="button"
+        onClick={() => {}}
+        className="rounded absolute right-4 top-4 flex gap-1.5 items-center max-500:right-3 max-500:top-3 hover:border-riot hover:text-white justify-center border bg-gray-2 border-gray-3 text-white text-xs p-1.5"
+      >
+        <span>Link with Riot</span>
+
+        <img src={riot_logo.src} className="size-4 max-500:size-3.5" />
+      </button>
+
       <div className="flex-row flex justify-evenly w-full max-w-screen-md text-center">
         {/*  */}
         <div className="flex-row flex-1 gap-1 items-center justify-center flex">
@@ -85,16 +95,6 @@ export default function Banner() {
           <span className="text-xl font-bold max-500:text-base text-white">
             {summoner.gameName} <span className="font-normal text-gray-6">#{summoner.tagLine}</span>
           </span>
-
-          <button
-            type="button"
-            onClick={() => {}}
-            className="rounded flex gap-1.5 items-center max-500:mt-1 hover:text-riot justify-center max-500:p-1 max-500:text-2xs mt-1.5 border bg-gray-2 border-gray-3 text-white text-xs p-1.5"
-          >
-            <span>Link with Riot</span>
-
-            <img src={riot_logo.src} className="size-4 max-500:size-3.5" />
-          </button>
         </div>
 
         {/*  */}

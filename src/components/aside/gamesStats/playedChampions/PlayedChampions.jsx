@@ -34,12 +34,10 @@ const PlayedChampions = ({ champions, fetchingGamesStats }) => {
           .map((key) => champions[key])
           .sort((a, b) => b.games - a.games)
           .slice(0, 2)
-          .map((champion) => (
-            <Champion key={champion.name} champion={champion} />
-          ))}
-        {Object.keys(champions).length === 1 && (
+          .map((champion) => champion && <Champion key={champion.name} champion={champion} />)}
+        {/* {Object.keys(champions).length === 1 && (
           <Champion fetchingGamesStats={true} skeleton={true} />
-        )}
+        )} */}
       </div>
     </div>
   );

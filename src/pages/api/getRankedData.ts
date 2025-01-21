@@ -28,14 +28,23 @@ const RANKED_EMBLEMS = {
   CHALLENGER,
 };
 
-// #region GET RANKED DATA
+// region GET RANKED DATA
 
-export const GET: APIRoute = async ({ params }) => {
+export const GET: APIRoute = async ({ request }) => {
   try {
-    const { summonerId } = params;
+    const url = new URL(request.url);
+    const region = url.searchParams.get("region");
+    const summonerId = url.searchParams.get("summonerId");
+
+    let searchRegion = "";
+
+    if (region === "las") searchRegion = "la2";
+    if (region === "br") searchRegion = "br1";
+    if (region === "lan") searchRegion = "la1";
+    if (region === "eun") searchRegion = "europe";
 
     const res = await fetch(
-      `https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${API_KEY}`
+      `https://${searchRegion}.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${API_KEY}`
     );
 
     if (!res.ok) {
@@ -89,7 +98,7 @@ export const GET: APIRoute = async ({ params }) => {
   }
 };
 
-// #region GET RANK DATA
+// region GET RANK DATA
 
 const getRankData = ({ tier, rank, wins, losses, leaguePoints }) => {
   if (tier !== "MASTER" && tier !== "GRANDMASTER" && tier !== "CHALLENGER") {
@@ -122,7 +131,7 @@ const getRankData = ({ tier, rank, wins, losses, leaguePoints }) => {
   };
 };
 
-// #region GET HIGHEST RANK
+// region GET HIGHEST RANK
 
 const getHighestRank = (solo, flex) => {
   const rankOrder = {

@@ -4,7 +4,8 @@ const getParticipant = async (
   gameDuration,
   summonerPuuid,
   summonerRanked,
-  jsons
+  jsons,
+  region
 ) => {
   let {
     win,
@@ -58,7 +59,7 @@ const getParticipant = async (
   if (isCurrentSummoner) {
     ranked = summonerRanked;
   } else {
-    const res = await fetch(`/api/getRankedData/${summonerId}`);
+    const res = await fetch(`/api/getRankedData/?region=${region}&summonerId=${summonerId}`);
     if (res.ok) {
       const rankedData = await res.json();
       ranked = rankedData;
