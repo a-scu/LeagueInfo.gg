@@ -24,5 +24,8 @@
   },
   "devDependencies": {
     "@astrojs/vercel": "^7.7.2"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
