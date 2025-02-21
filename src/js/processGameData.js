@@ -8,7 +8,7 @@ const processGameData = async (puuid, game, jsons, rankedData, region) => {
   const { info, metadata } = game;
   const { teams, gameMode, gameDuration, participants } = info;
 
-  if (gameMode !== "ARAM" && gameMode !== "CLASSIC" && gamemode !== "SWIFTPLAY") {
+  if (gameMode !== "ARAM" && gameMode !== "CLASSIC" && gameMode !== "SWIFTPLAY") {
     return { error: "Game mode not supported yet" };
   }
 

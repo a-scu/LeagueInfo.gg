@@ -43,7 +43,9 @@ export const GET: APIRoute = async ({ request }) => {
 // region GET ACCOUNT BY NAME AND TAG
 
 const getAccountByNameAndTag = async (region, name, tag) => {
-  let searchRegion = getRegionNuevo(region);
+  const searchRegion = getRegionNuevo(region);
+
+  console.log(searchRegion);
 
   const res = await fetch(
     `https://${searchRegion}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${name}/${tag}?api_key=${API_KEY}`
@@ -57,7 +59,9 @@ const getAccountByNameAndTag = async (region, name, tag) => {
 // region GET SUMMONER BY PUUID
 
 const getSummonerByPuuid = async (region, puuid) => {
-  let searchRegion = getRegion(region);
+  const searchRegion = getRegion(region);
+
+  console.log(searchRegion);
 
   const res = await fetch(
     `https://${searchRegion}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=${API_KEY}`
