@@ -9,11 +9,14 @@ import Regions from "./Regions";
 import baron from "../../assets/images/baron.webp";
 import Star from "../icons/Star";
 
-export default function Header({ initialRegion }) {
-  const [region, setRegion] = useState(initialRegion);
+import { $scrolled, setScrolled } from "@/js/store";
+import { useStore } from "@nanostores/react";
 
+export default function Header({ initialRegion }) {
+  const scrolled = useStore($scrolled);
+
+  const [region, setRegion] = useState(initialRegion);
   const [search, setSearch] = useState("");
-  const [scrolled, setScrolled] = useState(false);
 
   const headerRef = useRef(null);
 

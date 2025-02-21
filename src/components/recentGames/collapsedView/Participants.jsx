@@ -9,7 +9,7 @@ export default function Participants({ win, summonerPuuid, summonerTeam, opponen
         {summonerTeam.map((participant) => (
           <div key={participant.puuid} className="flex items-center gap-1 max-450:gap-0.5">
             <div
-              className={`overflow-hidden rounded size-3-5 min-size-3-5 sm:size-4 sm:min-size-4 aspect-square ${
+              className={`overflow-hidden rounded-full size-3-5 min-size-3-5 sm:size-4 sm:min-size-4 aspect-square ${
                 participant.puuid === summonerPuuid ? "border border-white rounded-full" : ""
               }`}
             >
@@ -39,7 +39,7 @@ export default function Participants({ win, summonerPuuid, summonerTeam, opponen
       <div className="flex max-450:w-16 max-500:w-20 w-24 flex-col gap-0.5 max-410:w-fit">
         {opponentTeam.map((participant) => (
           <div key={participant.puuid} className="flex items-center gap-1 max-450:gap-0.5 text-end">
-            <div className="overflow-hidden rounded size-3-5 min-size-3-5 sm:size-4 sm:min-size-4 aspect-square">
+            <div className="overflow-hidden rounded-full size-3-5 min-size-3-5 sm:size-4 sm:min-size-4 aspect-square">
               <img
                 src={participant.champIcon}
                 alt=""

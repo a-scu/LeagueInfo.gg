@@ -14,6 +14,7 @@ import DIAMOND from "@/assets/images/rankedEmblems/diamond.png";
 import MASTER from "@/assets/images/rankedEmblems/master.png";
 import GRANDMASTER from "@/assets/images/rankedEmblems/grandmaster.png";
 import CHALLENGER from "@/assets/images/rankedEmblems/challenger.png";
+import { getRegion } from "@/js/getRegion";
 
 const RANKED_EMBLEMS = {
   IRON,
@@ -36,12 +37,10 @@ export const GET: APIRoute = async ({ request }) => {
     const region = url.searchParams.get("region");
     const summonerId = url.searchParams.get("summonerId");
 
-    let searchRegion = "";
+    if (!region) throw Error("Region not specified");
+    if (!summonerId) throw Error("summonerId not specified");
 
-    if (region === "las") searchRegion = "la2";
-    if (region === "br") searchRegion = "br1";
-    if (region === "lan") searchRegion = "la1";
-    if (region === "eun") searchRegion = "europe";
+    let searchRegion = getRegion(region);
 
     const res = await fetch(
       `https://${searchRegion}.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${API_KEY}`
@@ -69,6 +68,7 @@ export const GET: APIRoute = async ({ request }) => {
     if (flex) flex = getRankData(flex);
 
     let highestRank;
+
     if (solo && flex) {
       highestRank = getHighestRank(solo, flex);
     } else if (solo) {

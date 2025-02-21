@@ -8,9 +8,9 @@ const processGameData = async (puuid, game, jsons, rankedData, region) => {
   const { info, metadata } = game;
   const { teams, gameMode, gameDuration, participants } = info;
 
-  if (gameMode !== "ARAM" && gameMode !== "CLASSIC") {
-    return { error: "Game mode not supported yet" };
-  }
+  // if (gameMode !== "ARAM" && gameMode !== "CLASSIC") {
+  //   return { error: "Game mode not supported yet" };
+  // }
 
   let summoner = participants.find((participant) => participant.puuid === puuid);
 

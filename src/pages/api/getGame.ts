@@ -1,15 +1,21 @@
 import type { APIRoute } from "astro";
+import { getRegionMatches } from "@/js/getRegion";
 
 const API_KEY = import.meta.env.RIOT_API_KEY;
 
-export const GET: APIRoute = async ({ params }) => {
+export const GET: APIRoute = async ({ request }) => {
   try {
-    const { gameId } = params;
+    const url = new URL(request.url);
+    const region = url.searchParams.get("region");
+    const gameId = url.searchParams.get("gameId");
 
+    if (!region) throw Error("Region not specified");
     if (!gameId) throw Error("Game id missing");
 
+    const searchRegion = getRegionMatches(region);
+
     const res = await fetch(
-      `https://americas.api.riotgames.com/lol/match/v5/matches/${gameId}?api_key=${API_KEY}`
+      `https://${searchRegion}.api.riotgames.com/lol/match/v5/matches/${gameId}?api_key=${API_KEY}`
     );
 
     if (!res.ok) throw Error("Error fetching game");

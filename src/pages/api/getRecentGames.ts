@@ -3,17 +3,19 @@ import type { APIRoute } from "astro";
 export const GET: APIRoute = async ({ request }) => {
   try {
     const url = new URL(request.url);
+    const region = url.searchParams.get("region");
     const puuid = url.searchParams.get("puuid");
     const count = url.searchParams.get("count");
     const startTime = url.searchParams.get("startTime");
     const queue = url.searchParams.get("queue");
     const type = url.searchParams.get("type");
 
+    if (!region) throw Error("Region not specified");
     if (!puuid) throw Error("Puuid missing");
     if (!count) throw Error("Games to fetch not specified");
 
     const apiUrl = new URL(
-      `/api/getGameIds?puuid=${puuid}&count=${count}` +
+      `/api/getGameIds?region=${region}&puuid=${puuid}&count=${count}` +
         (startTime ? `&startTime=${startTime}` : "") +
         (queue ? `&queue=${queue}` : "") +
         (type ? `&type=${type}` : ""),
@@ -28,7 +30,7 @@ export const GET: APIRoute = async ({ request }) => {
 
     const games = await Promise.all(
       gameIds.map(async (gameId) => {
-        const gameUrl = new URL(`/api/getGame/${gameId}`, request.url);
+        const gameUrl = new URL(`/api/getGame?region=${region}&gameId=${gameId}`, request.url);
         const res = await fetch(gameUrl.href);
         if (!res.ok) throw new Error("Error fetching game");
         const data = await res.json();

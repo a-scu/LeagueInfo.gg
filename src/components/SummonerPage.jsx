@@ -96,7 +96,9 @@ export default function SummonerPage({ search, initialRegion }) {
       try {
         const count = 5;
 
-        const res = await fetch(`/api/getRecentGames?puuid=${puuid}&count=${count}`);
+        const res = await fetch(
+          `/api/getRecentGames?region=${initialRegion}&puuid=${puuid}&count=${count}`
+        );
         if (!res.ok) throw Error(res.statusText);
         const recentGames = await res.json();
 
@@ -137,7 +139,7 @@ export default function SummonerPage({ search, initialRegion }) {
 
   return (
     <div className="flex flex-col gap-2">
-      <Banner />
+      <Banner region={initialRegion} />
       <div className="flex max-1126:mx-auto max-1126:max-w-[768px] flex-col max-1126:w-full 1126:mx-auto 1126:grid grid-cols-[320px,768px] gap-2">
         <Aside />
         <RecentGames />

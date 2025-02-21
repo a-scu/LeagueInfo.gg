@@ -1,3 +1,4 @@
+import { getRegion, getRegionNuevo } from "@/js/getRegion";
 import type { APIRoute } from "astro";
 
 const API_KEY = import.meta.env.RIOT_API_KEY;
@@ -11,6 +12,7 @@ export const GET: APIRoute = async ({ request }) => {
     const search = url.searchParams.get("search");
     const ddragonVersion = url.searchParams.get("ddragonVersion");
 
+    if (!region) throw Error("Region not specified");
     if (!search) throw Error("Search is empty");
     if (!ddragonVersion) throw Error("Ddragon version missing");
 
@@ -41,10 +43,7 @@ export const GET: APIRoute = async ({ request }) => {
 // region GET ACCOUNT BY NAME AND TAG
 
 const getAccountByNameAndTag = async (region, name, tag) => {
-  let searchRegion = "";
-
-  if (region === "las") searchRegion = "americas";
-  if (region === "br") searchRegion = "americas";
+  let searchRegion = getRegionNuevo(region);
 
   const res = await fetch(
     `https://${searchRegion}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${name}/${tag}?api_key=${API_KEY}`
@@ -58,12 +57,7 @@ const getAccountByNameAndTag = async (region, name, tag) => {
 // region GET SUMMONER BY PUUID
 
 const getSummonerByPuuid = async (region, puuid) => {
-  let searchRegion = "";
-
-  if (region === "las") searchRegion = "la2";
-  if (region === "br") searchRegion = "br1";
-  if (region === "lan") searchRegion = "la1";
-  if (region === "eun") searchRegion = "europe";
+  let searchRegion = getRegion(region);
 
   const res = await fetch(
     `https://${searchRegion}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=${API_KEY}`

@@ -4,8 +4,40 @@ import Las from "../icons/regions/Las";
 import Star from "../icons/Star";
 import { useState } from "react";
 import riot_logo from "../../assets/images/riot-logo.png";
+import Br from "../icons/regions/Br";
+import Me from "../icons/regions/Me";
+import Sea from "../icons/regions/Sea";
+import Tr from "../icons/regions/Tr";
+import Ru from "../icons/regions/Ru";
+import Oce from "../icons/regions/Oce";
+import Na from "../icons/regions/Na";
+import Lan from "../icons/regions/Lan";
+import Kr from "../icons/regions/Kr";
+import Jp from "../icons/regions/Jp";
+import Euw from "../icons/regions/Euw";
+import Eun from "../icons/regions/Eun";
+import Vn from "../icons/regions/Vn";
+import Tw from "../icons/regions/Tw";
 
-export default function Banner() {
+const REGION_ICONS = {
+  br: Br,
+  eun: Eun,
+  euw: Euw,
+  jp: Jp,
+  kr: Kr,
+  lan: Lan,
+  las: Las,
+  me: Me,
+  na: Na,
+  oce: Oce,
+  ru: Ru,
+  sea: Sea,
+  tr: Tr,
+  tw: Tw,
+  vn: Vn,
+};
+
+export default function Banner({ region }) {
   const fetchingSummoner = useStore($fetchingSummoner);
   const summoner = useStore($summoner) || {};
   const fetchingRankedData = useStore($fetchingRankedData);
@@ -58,6 +90,8 @@ export default function Banner() {
     ? "border-bronze"
     : "border-[#47433f]";
 
+  const RegionIcon = REGION_ICONS[region];
+
   return (
     <div className="flex justify-center relative items-center w-full p-2 pt-4 bg-gray-1 mt-">
       <button
@@ -73,8 +107,8 @@ export default function Banner() {
       <div className="flex-row flex justify-evenly w-full max-w-screen-md text-center">
         {/*  */}
         <div className="flex-row flex-1 gap-1 items-center justify-center flex">
-          <Las className={"size-5-5 text-gray-6"} />
-          <span className="text-xs text-gray-6">LAS</span>
+          <RegionIcon className={"size-5-5 text-gray-6"} />
+          <span className="text-xs text-gray-6">{region.toUpperCase()}</span>
         </div>
 
         {/*  */}

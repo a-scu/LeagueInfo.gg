@@ -1,5 +1,13 @@
 import { atom } from "nanostores";
 
+// region SCROLLED
+
+export const $scrolled = atom(null);
+
+export const setScrolled = (value) => {
+  $scrolled.set(value);
+};
+
 // region SUMMONER
 
 export const $fetchingSummoner = atom(true);

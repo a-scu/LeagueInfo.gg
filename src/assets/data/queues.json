@@ -283,6 +283,12 @@
     "notes": "Deprecated in patch 9.23"
   },
   {
+    "queueId": 480,
+    "map": "Summoner's Rift",
+    "description": "Normal",
+    "notes": null
+  },
+  {
     "queueId": 490,
     "map": "Summoner's Rift",
     "description": "Normal",
