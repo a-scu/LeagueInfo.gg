@@ -50,6 +50,14 @@ export default function Rank({ queue, fetchingRankedData, rankData }) {
       </div>
     );
 
+  // return (
+  //   <div className="bg-gray-1 flex items-center justify-center">
+  //     <div className="rotate-90">
+  //       <span className="leading-none text-xs text-center text-gray-4">UNRANKED</span>
+  //     </div>
+  //   </div>
+  // );
+
   const { rank, tier, emblem, wins, losses, points, winrate } = rankData;
 
   const borderColor =

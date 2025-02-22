@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
 import ArrowDown from "@/components/icons/ArrowDown";
 
 const REGIONS = [
@@ -23,16 +22,31 @@ const REGIONS = [
 export default function Regions({ region, setRegion }) {
   const [expanded, setExpanded] = useState(false);
 
+  const dropdownRef = useRef(null);
+
   const handleOnClick = (region) => {
     setRegion(region);
     setExpanded(false);
     console.log("Region:", region);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setExpanded(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div>
+    <div className="relative" ref={dropdownRef}>
       <button
-        disabled={region ? false : true}
+        disabled={!region}
         type="button"
         onClick={() => setExpanded(!expanded)}
         className={`flex items-center pl-1 h-full max-400:text-2xs gap-1 justify-center text-center max-400:w-14 w-16 text-xs text-blue font-semibold bg-gray-1 border-r border-r-gray-2 ${

@@ -11,17 +11,22 @@ import Star from "../icons/Star";
 
 import { $scrolled, setScrolled } from "@/js/store";
 import { useStore } from "@nanostores/react";
+import SearchSuggestions from "./SearchSuggestions";
 
 export default function Header({ initialRegion }) {
   const scrolled = useStore($scrolled);
 
   const [region, setRegion] = useState(initialRegion);
   const [search, setSearch] = useState("");
+  const [inputFocused, setInputFocused] = useState(false);
 
   const headerRef = useRef(null);
+  const inputRef = useRef(null);
 
-  const handleSearch = (e) => {
+  const handleSearch = (e, search, region) => {
     e.preventDefault();
+    if (!search) return;
+
     if (search.includes("#")) {
       const formattedSearch = search.replace("#", "-").replace(/\s/g, "").toLowerCase();
       window.location.href = `/summoners/${region}/${formattedSearch}`;
@@ -91,6 +96,19 @@ export default function Header({ initialRegion }) {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (inputRef.current && !inputRef.current.contains(event.target)) {
+        setInputFocused(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <header
       ref={headerRef}
@@ -114,34 +132,43 @@ export default function Header({ initialRegion }) {
           />
 
           {/* Formulario */}
-          <form onSubmit={handleSearch} className="flex w-full h-9 rounded bg-gray-1">
+          <form
+            ref={inputRef}
+            onSubmit={(e) => handleSearch(e, search, region)}
+            className="flex w-full h-9 rounded bg-gray-1 relative"
+          >
+            {/* Región */}
             <Regions region={region} setRegion={setRegion} />
 
-            <div className="relative justify-center flex items-center flex-1 overflow-hidden">
+            {/* Input de búsqueda */}
+            <div className="relative justify-center flex items-center flex-1 overflow-visible">
               <input
                 id="search"
                 type="text"
                 value={search}
                 onChange={onChange}
+                onFocus={() => setInputFocused(true)}
+                autoComplete="off"
                 className="w-full h-full px-3 text-sm text-transparent bg-transparent outline-none caret-blue"
               />
 
+              {/* Placeholder dinámico */}
               <span className="absolute left-3 pointer-events-none truncate">
                 <span className="text-sm text-white">{search.split("#")[0]}</span>
                 {search && !search.includes("#") && (
                   <span className="ml-1 text-sm text-gray-5">+ #TAG</span>
                 )}
                 {search && search.includes("#") && (
-                  <span className="text-sm text-emerald">
-                    {" "}
-                    #{search.includes("#") ? search.split("#")[1] : ""}{" "}
-                  </span>
+                  <span className="text-sm text-emerald">#{search.split("#")[1]}</span>
                 )}
               </span>
 
               {!search && <InputLabel />}
+
+              {inputFocused && <SearchSuggestions handleSearch={handleSearch} />}
             </div>
 
+            {/* Botón de búsqueda principal */}
             <SearchButton onClick={handleSearch} />
           </form>
         </div>

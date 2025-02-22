@@ -1,9 +1,9 @@
 import { useStore } from "@nanostores/react";
 import { $fetchingRankedData, $fetchingSummoner, $rankedData, $summoner } from "@/js/store";
-import Las from "../icons/regions/Las";
 import Star from "../icons/Star";
 import { useState } from "react";
 import riot_logo from "../../assets/images/riot-logo.png";
+import Las from "../icons/regions/Las";
 import Br from "../icons/regions/Br";
 import Me from "../icons/regions/Me";
 import Sea from "../icons/regions/Sea";
@@ -94,7 +94,7 @@ export default function Banner({ region }) {
 
   return (
     <div className="flex justify-center relative items-center w-full p-2 pt-4 bg-gray-1 mt-">
-      <button
+      {/* <button
         type="button"
         onClick={() => {}}
         className="rounded absolute right-4 top-4 flex gap-1.5 items-center max-500:right-3 max-500:top-3 hover:border-riot hover:text-white justify-center border bg-gray-2 border-gray-3 text-white text-xs p-1.5"
@@ -102,7 +102,7 @@ export default function Banner({ region }) {
         <span>Link with Riot</span>
 
         <img src={riot_logo.src} className="size-4 max-500:size-3.5" />
-      </button>
+      </button> */}
 
       <div className="flex-row flex justify-evenly w-full max-w-screen-md text-center">
         {/*  */}
