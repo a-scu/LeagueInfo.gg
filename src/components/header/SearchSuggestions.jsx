@@ -41,7 +41,7 @@ const SearchSuggestions = ({ handleSearch, scrolled }) => {
             {searchType === "recents" ? (
               <Recent className="size-4 fill-white stroke-white text-white max-500:size-3-5" />
             ) : (
-              <Star className="size-[15px] fill-transparent stroke-white text-white max-500:size-3-5 relative" />
+              <Star className="size-[15px] fill-transparent stroke-white text-white max-500:size-[13px] relative" />
             )}
 
             <span className="text-center text-sm text-white max-500:text-2xs">
