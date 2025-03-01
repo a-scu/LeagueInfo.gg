@@ -283,18 +283,20 @@ export default function Header({ initialRegion }) {
                 onSelect={handleSelect}
                 onBlur={() => setInputSelected(false)}
                 maxLength={23}
-                className="w-full h-full pl-3 text-sm text-transparent bg-transparent outline-none caret-blue select"
+                className="w-full h-full pl-3 hidden-selection text-xs max-500:text-2xs text-transparent bg-transparent outline-none caret-blue select"
               />
 
               {/* Placeholder dinámico */}
 
               <span className="absolute left-3 pointer-events-none truncate">
-                <span className="text-sm text-white">{search.split("#")[0]}</span>
+                <span className="text-xs max-500:text-2xs text-white">{search.split("#")[0]}</span>
                 {search && !search.includes("#") && (
-                  <span className="ml-1 text-sm text-gray-5">+ #TAG</span>
+                  <span className="ml-1 text-xs max-500:text-2xs text-gray-5">+ #TAG</span>
                 )}
                 {search && search.includes("#") && (
-                  <span className="text-sm text-emerald">#{search.split("#")[1]}</span>
+                  <span className="text-xs max-500:text-2xs text-emerald">
+                    #{search.split("#")[1]}
+                  </span>
                 )}
               </span>
 

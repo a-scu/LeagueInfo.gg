@@ -36,15 +36,15 @@ const SearchSuggestions = ({ handleSearch, scrolled }) => {
       >
         <div className="flex p-2 pb-0 gap-2">
           <div
-            className={`px-3 flex gap-1 items-center justify-center py-1.5 rounded bg-gray-4 flex-[4]`}
+            className={`px-3 flex gap-1 items-center justify-center py-1.5 max-500:py-1 rounded bg-gray-4 flex-[4]`}
           >
             {searchType === "recents" ? (
-              <Recent className="size-4 fill-white stroke-white text-white" />
+              <Recent className="size-4 fill-white stroke-white text-white max-500:size-3-5" />
             ) : (
-              <Star className="size-[15px] fill-transparent stroke-white text-white relative" />
+              <Star className="size-[15px] fill-transparent stroke-white text-white max-500:size-3-5 relative" />
             )}
 
-            <span className="text-center text-sm text-white">
+            <span className="text-center text-sm text-white max-500:text-2xs">
               {searchType === "recents" ? "Recents" : "Favorites"}
             </span>
           </div>
@@ -54,12 +54,12 @@ const SearchSuggestions = ({ handleSearch, scrolled }) => {
             onClick={() =>
               setSearchType((searchType) => (searchType === "recents" ? "favorites" : "recents"))
             }
-            className={`px-3 py-1.5 rounded flex-1 flex items-center justify-center bg-gray-1`}
+            className={`px-3 py-1.5 max-500:py-1 rounded flex-1 flex items-center justify-center bg-gray-1`}
           >
             {searchType === "recents" ? (
-              <Star className="size-4 fill-transparent stroke-gray-6 text-gray-6" />
+              <Star className="size-4 fill-transparent stroke-gray-6 max-500:size-3-5 text-gray-6" />
             ) : (
-              <Recent className="size-4 fill-gray-6 stroke-gray-6 text-gray-6" />
+              <Recent className="size-4 fill-gray-6 max-500:size-3-5 stroke-gray-6 text-gray-6" />
             )}
           </button>
         </div>
@@ -180,11 +180,13 @@ const Summoner = ({ handleSearch, name, region, listType }) => {
       className="p-2 hover:bg-gray-4 cursor-pointer rounded flex gap-2 items-center"
       onClick={(e) => handleSearch(e, "Winnux #211", "br")}
     >
-      <div className="gap-0.5 flex bg-blue rounded py-0.5 px-1">
-        <span className="text-white text-2xs font-bold">{region.toUpperCase()}</span>{" "}
+      <div className="gap-0.5 flex bg-blue rounded py-0.5 max-500:px-0.5 px-1">
+        <span className="text-white text-2xs max-500:text-3xs font-bold">
+          {region.toUpperCase()}
+        </span>{" "}
       </div>
 
-      <span className="text-sm truncate text-left text-white">{name}</span>
+      <span className="text-sm truncate text-left text-white max-500:text-2xs">{name}</span>
 
       <div className="flex gap-2 ml-auto items-center relative left-1">
         <button onClick={handleFavorite} className="group border-gray-6">

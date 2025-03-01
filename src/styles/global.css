@@ -73,3 +73,12 @@ html {
   border: 3px solid var(--gray-8);
   border-radius: 999px;
 }
+
+*::selection {
+  background-color: #5383e8b0;
+  color: #fff;
+}
+
+.hidden-selection::selection {
+  color: transparent;
+}
