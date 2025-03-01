@@ -87,7 +87,7 @@ const SearchSuggestions = ({ handleSearch, scrolled }) => {
         {/* Favorites */}
         {searchType === "favorites" && (
           <div
-            className={`flex flex-col flex-1 overflow-auto thin-scroll border-t border-t-gray-4 p-2 ${
+            className={`flex flex-col flex-1 overflow-auto thin-scroll p-2 ${
               searchType === "recents" && recents.length > 5
                 ? "mr-[5px] pr-[5px]"
                 : searchType === "favorites" && favorites.length > 5 && "mr-[5px] pr-[5px]"
@@ -177,7 +177,7 @@ const Summoner = ({ handleSearch, name, region, listType }) => {
 
   return (
     <button
-      className="p-2 hover:bg-gray-4 cursor-pointer rounded flex gap-2 items-center"
+      className="p-2 max-500:py-1.5 hover:bg-gray-4 cursor-pointer rounded flex gap-2 items-center"
       onClick={(e) => handleSearch(e, "Winnux #211", "br")}
     >
       <div className="gap-0.5 flex bg-blue rounded py-0.5 max-500:px-0.5 px-1">
@@ -189,9 +189,15 @@ const Summoner = ({ handleSearch, name, region, listType }) => {
       <span className="text-sm truncate text-left text-white max-500:text-2xs">{name}</span>
 
       <div className="flex gap-2 ml-auto items-center relative left-1">
+        {listType === "favorites" && (
+          <div className="group border-gray-6 opacity-0">
+            <Close className="size-4-5 max-500:size-[17px] top-px relative group-hover:fill-red group-hover:text-red group-hover:stroke-red fill-gray-6 text-gray-6 stroke-gray-6" />
+          </div>
+        )}
+
         <button onClick={handleFavorite} className="group border-gray-6">
           <Star
-            className={`size-4 ${
+            className={`size-4 max-500:size-[15px] ${
               listType === "favorites"
                 ? "fill-gold stroke-gold mr-0.5"
                 : "group-hover:stroke-gold fill-transparent stroke-gray-6"
@@ -201,7 +207,7 @@ const Summoner = ({ handleSearch, name, region, listType }) => {
 
         {listType === "recents" && (
           <button onClick={handleRemove} className="group border-gray-6">
-            <Close className="size-4-5 top-px relative group-hover:fill-red group-hover:text-red group-hover:stroke-red fill-gray-6 text-gray-6 stroke-gray-6" />
+            <Close className="size-4-5 max-500:size-[17px] top-px relative group-hover:fill-red group-hover:text-red group-hover:stroke-red fill-gray-6 text-gray-6 stroke-gray-6" />
           </button>
         )}
       </div>

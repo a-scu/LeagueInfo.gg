@@ -33,11 +33,11 @@ export default function QueueTypes() {
             disabled={fetchingRecentGames}
             onClick={() => setQueueType(id)}
             className={`max-800:bg-gray-1 border max-800:border-2 max-500:text-2xs border-gray-1 min-w-fit rounded max-800:rounded-md py-1.5 text-xs px-3 ${
-              fetchingRecentGames && "opacity-50"
+              fetchingRecentGames && "text-gray-4"
             } ${
               !fetchingRecentGames && queueType === id
                 ? "max-800:bg-gray-3 bg-gray-1 text-white"
-                : "bg-gray-3 text-gray-6"
+                : !fetchingRecentGames && "bg-gray-3 text-gray-6"
             } ${!fetchingRecentGames && queueType !== id && "hover:bg-gray-7"}`}
           >
             {title}
