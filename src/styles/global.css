@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: #1c1c1f;
+}
+
+:root {
+  --riot: #ec0029;
+
+  --gray-1: #31313c;
+  --gray-2: #282830;
+  --gray-3: #1c1c1f;
+  --gray-4: #515163;
+  --gray-5: #7b7a8e;
+  --gray-6: #9e9eb1;
+  --gray-7: #232328;
+  --gray-8: #3d3d4b;
+
+  --blue: #5383e8;
+  --blue-1: #28344e;
+  --blue-2: #2f436e;
+  --blue-3: #ecf2ff;
+  --blue-4: #d5e3ff;
+
+  --red: #e84057;
+  --red-1: #59343b;
+  --red-2: #703c47;
+
+  --mvp: #eb9c00;
+  --ace: #7d59ea;
+
+  --orange: #f06f00;
+  --teal: #00bba3;
+  --kdaBlue: #0093ff;
+
+  --bronze: #7c6750;
+  --silver: #515163;
+  --gold: #eb9c00;
+  --platinum: #00bba3;
+  --emerald: #00ae0a;
+  --diamond: #0093ff;
+  --master: #e537a2;
+  --grandmaster: #c0241c;
+  --challenger: #00b8ed;
+
+  --db-100: #28344e;
+  --db-200: #2f436e;
+  --db-300: #2f436e;
+  --db-400: #4171d6;
+  --db-500: #5383e8;
+
+  --dr-100: #59343b;
+  --dr-200: #703c47;
+  --dr-300: #703c47;
+  --dr-400: #d31a45;
+  --dr-500: #e84057;
+}
+
+/* Width */
+.thin-scroll::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+/* .thin-scroll::-webkit-scrollbar-track {
+} */
+
+/* Handle */
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: var(--gray-4);
+  border: 3px solid var(--gray-8);
+  border-radius: 999px;
+}

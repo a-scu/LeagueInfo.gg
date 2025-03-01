@@ -8,6 +8,12 @@ export const setScrolled = (value) => {
   $scrolled.set(value);
 };
 
+export const $searchSuggestionsVisible = false;
+
+export const setSearchSuggestionsVisible = (value) => {
+  $searchSuggestionsVisible.set(value);
+};
+
 // region SUMMONER
 
 export const $fetchingSummoner = atom(true);

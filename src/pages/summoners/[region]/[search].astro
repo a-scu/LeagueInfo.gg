@@ -1,4 +1,5 @@
 ---
+import "@/styles/global.css";
 import SummonerPage from "@/components/SummonerPage";
 import SummonerLayout from "@/layouts/SummonerLayout";
 
@@ -12,25 +13,6 @@ const { region, search } = Astro.params;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>League Info</title>
-
-    <style>
-      @tailwind base;
-      @tailwind components;
-      @tailwind utilities;
-      * {
-        outline: none;
-      }
-      html {
-        background-color: #1c1c1f;
-      }
-      body {
-        box-sizing: border-box;
-        outline: none;
-      }
-      .scroll-hidden ::-webkit-scrollbar {
-        display: none;
-      }
-    </style>
   </head>
   <body>
     <SummonerLayout client:load initialRegion={region}>

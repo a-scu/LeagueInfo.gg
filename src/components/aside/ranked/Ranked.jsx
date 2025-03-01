@@ -18,7 +18,7 @@ export default function Ranked() {
     >
       <div className="flex gap-px overflow-hidden justify-center rounded max-800:rounded-none">
         {!solo && !flex ? (
-          <div className="bg-gray-1 max-500:text-2xs text-gray-5 text-xs p-2 rounded flex-1 items-center text-center justify-center">
+          <div className="bg-gray-1 max-500:text-2xs text-gray-4 text-xs p-2 rounded flex-1 items-center text-center justify-center">
             Unranked
           </div>
         ) : (
