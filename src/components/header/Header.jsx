@@ -219,7 +219,6 @@ export default function Header({ initialRegion }) {
     >
       <div className={`w-full ${scrolled ? "py-1 px-2 max-400:px-1" : "py-2 max-400:py-1"}`}>
         <div
-          ref={inputRef}
           className={`flex items-center relative w-full max-w-screen-md max-400:gap-1 gap-2 mx-auto transition-all duration-300 ease-out ${
             scrolled ? "flex-row" : "flex-col"
           }`}
@@ -235,6 +234,7 @@ export default function Header({ initialRegion }) {
 
           {/* Formulario */}
           <form
+            ref={dropdownRef}
             onSubmit={(e) => handleSearch(e, search, region)}
             className={`flex w-full h-9 ${scrolled ? "rounded" : "800:rounded"} bg-gray-1 relative`}
           >
@@ -250,7 +250,6 @@ export default function Header({ initialRegion }) {
 
             {expanded && (
               <div
-                ref={dropdownRef}
                 className={`absolute left-0 right-0 top-full rounded-b-md overflow-auto z-50 bg-gray-8 grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] p-1 gap-1 shadow-lg ${
                   expanded && !scrolled ? "max-800:rounded-b-none" : ""
                 } w-full thin-scroll`}
@@ -303,7 +302,11 @@ export default function Header({ initialRegion }) {
               {!search && <InputLabel />}
             </div>
 
-            {inputFocused && <SearchSuggestions scrolled={scrolled} handleSearch={handleSearch} />}
+            <div ref={inputRef}>
+              {inputFocused && (
+                <SearchSuggestions scrolled={scrolled} handleSearch={handleSearch} />
+              )}
+            </div>
 
             {/* Botón de búsqueda principal */}
             <SearchButton expanded={expanded} inputFocused={inputFocused} onClick={handleSearch} />
