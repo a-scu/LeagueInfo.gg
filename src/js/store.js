@@ -1,5 +1,21 @@
 import { atom } from "nanostores";
 
+// region FAVORITES
+
+export const $favorites = atom(null);
+
+export const setFavorites = (value) => {
+  $favorites.set(value);
+};
+
+// region RECENTS
+
+export const $recents = atom(null);
+
+export const setRecents = (value) => {
+  $recents.set(value);
+};
+
 // region SCROLLED
 
 export const $scrolled = atom(null);

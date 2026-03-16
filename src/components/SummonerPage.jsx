@@ -21,6 +21,7 @@ import Banner from "./banner/Banner";
 import Aside from "./aside/Aside";
 import RecentGames from "./recentGames/RecentGames";
 import getGamesStats from "@/js/getGamesStats";
+import Berenjena from "Berenjena";
 
 export default function SummonerPage({ search, initialRegion }) {
   const summoner = useStore($summoner);
@@ -106,7 +107,14 @@ export default function SummonerPage({ search, initialRegion }) {
 
         const processedRecentGames = await Promise.all(
           recentGames.map(
-            async (game) => await processGameData(puuid, game, jsons, rankedData, initialRegion)
+            async (game) =>
+              await processGameData(
+                puuid,
+                game,
+                jsons,
+                rankedData,
+                initialRegion
+              )
           )
         );
 
@@ -129,7 +137,11 @@ export default function SummonerPage({ search, initialRegion }) {
       const jsons = await handleGetJsons();
       const summoner = await getSummonerData(jsons.ddragonVersion);
       const rankedData = await getRankedData(summoner.id);
-      const recentGames = await getRecentGames(summoner.puuid, jsons, rankedData);
+      const recentGames = await getRecentGames(
+        summoner.puuid,
+        jsons,
+        rankedData
+      );
     };
 
     getAllData();
@@ -140,6 +152,9 @@ export default function SummonerPage({ search, initialRegion }) {
   return (
     <div className="flex flex-col gap-2">
       <Banner region={initialRegion} />
+
+      <Berenjena />
+
       <div className="flex max-1126:mx-auto max-1126:max-w-[768px] flex-col max-1126:w-full 1126:mx-auto 1126:grid grid-cols-[320px,768px] gap-2">
         <Aside />
         <RecentGames />
